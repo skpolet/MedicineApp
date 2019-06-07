@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Country View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CountryViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mjE-II-kuf">
+                                <rect key="frame" x="0.0" y="183" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWn-VC-bvB">
+                                <rect key="frame" x="0.0" y="239" width="414" height="657"/>
+                                <color key="backgroundColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.89055418968200684" green="0.44031041860580444" blue="0.40371322631835938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Здравствуйте, выберете ваш город" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHJ-y2-Sy9">
+                                <rect key="frame" x="47" y="84" width="275" height="67"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="gWn-VC-bvB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3bW-m3-jx7"/>
+                            <constraint firstAttribute="bottom" secondItem="gWn-VC-bvB" secondAttribute="bottom" id="Eph-Wv-GLw"/>
+                            <constraint firstItem="gWn-VC-bvB" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="For-6S-2Dl"/>
+                            <constraint firstItem="mjE-II-kuf" firstAttribute="top" secondItem="xHJ-y2-Sy9" secondAttribute="bottom" constant="32" id="Nkp-G7-Yjh"/>
+                            <constraint firstItem="xHJ-y2-Sy9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="REX-vi-c0U"/>
+                            <constraint firstItem="gWn-VC-bvB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zwi-Ky-iAE"/>
+                            <constraint firstItem="mjE-II-kuf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="f09-cA-pGj"/>
+                            <constraint firstItem="xHJ-y2-Sy9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="nfB-G3-jTH"/>
+                            <constraint firstItem="mjE-II-kuf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tWT-52-oVk"/>
+                            <constraint firstItem="gWn-VC-bvB" firstAttribute="top" secondItem="mjE-II-kuf" secondAttribute="bottom" id="yxE-3K-bah"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="xHJ-y2-Sy9" secondAttribute="trailing" constant="92" id="zvn-I9-feh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="jSI-o0-lcm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="498.55072463768118" y="249.77678571428569"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="3OB-hr-4DY">
+            <objects>
+                <viewController id="Z49-aG-aNC" customClass="ViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="TZj-Ju-wKn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="rSO-IP-3y0"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YTe-lY-heM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1294" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="p3W-YZ-qm7">
+            <objects>
+                <viewController id="m0T-k7-VI2" customClass="ViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="6wi-kb-6eM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="vRU-Db-Fm3"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B3j-Q7-45U" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2074" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="RLZ-5F-yZl">
+            <objects>
+                <viewController id="LiM-XI-egP" customClass="ViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="SdV-3h-6GF">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <viewLayoutGuide key="safeArea" id="qcW-8J-M8R"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WsT-Ah-udM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2816" y="250"/>
+        </scene>
+    </scenes>
+</document>
