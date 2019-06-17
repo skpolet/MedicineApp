@@ -7,24 +7,40 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
-class CountryViewController: UIViewController {
+class CountryViewController: UIViewController, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
+        }
+    }
 
-        // Do any additional setup after loading the view.
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        retreiveCityName(lattitude: locValue.latitude, longitude: locValue.longitude) { (nameCity) in
+            print("nameCity\(String(describing: nameCity))")
+        }
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func retreiveCityName(lattitude: Double, longitude: Double, completionHandler: @escaping (String?) -> Void)
+    {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(CLLocation(latitude: lattitude, longitude: longitude), completionHandler:
+            {
+                placeMarks, error in
+                
+                completionHandler(placeMarks?.first?.locality)
+        })
     }
-    */
 
 }

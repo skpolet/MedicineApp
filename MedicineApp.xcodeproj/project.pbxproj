@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1201FC422B7AB340092C1C2 /* LocationCervices.swift */; };
+		E1201FC722B7B04E0092C1C2 /* TestMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1201FC622B7B04E0092C1C2 /* TestMapController.swift */; };
 		E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */; };
 		E1903E1022AA778100DEB9E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1903E0E22AA778100DEB9E0 /* Main.storyboard */; };
 		E1903E1222AA778800DEB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1122AA778800DEB9E0 /* Assets.xcassets */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E1201FC422B7AB340092C1C2 /* LocationCervices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCervices.swift; sourceTree = "<group>"; };
+		E1201FC622B7B04E0092C1C2 /* TestMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapController.swift; sourceTree = "<group>"; };
 		E1903E0722AA778100DEB9E0 /* MedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1903E0F22AA778100DEB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -85,6 +89,7 @@
 		E1903E1D22AA77AC00DEB9E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				E1201FC422B7AB340092C1C2 /* LocationCervices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -100,10 +105,11 @@
 			isa = PBXGroup;
 			children = (
 				E1E14B7322AA864800D11791 /* CountryViewController.swift */,
-				E1E14B7522AA867400D11791 /* HomeViewController.swift */,
 				E1E14B7722AA86A200D11791 /* ClinicsListController.swift */,
+				E1E14B7522AA867400D11791 /* HomeViewController.swift */,
 				E1E14B7922AA86C200D11791 /* ClinicViewController.swift */,
 				E1E14B7B22AA86F100D11791 /* ClinicPricesViewController.swift */,
+				E1201FC622B7B04E0092C1C2 /* TestMapController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,7 +187,9 @@
 			files = (
 				E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */,
 				E1E14B7422AA864800D11791 /* CountryViewController.swift in Sources */,
+				E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */,
 				E1E14B7C22AA86F100D11791 /* ClinicPricesViewController.swift in Sources */,
+				E1201FC722B7B04E0092C1C2 /* TestMapController.swift in Sources */,
 				E1E14B7A22AA86C200D11791 /* ClinicViewController.swift in Sources */,
 				E1E14B7622AA867400D11791 /* HomeViewController.swift in Sources */,
 				E1E14B7822AA86A200D11791 /* ClinicsListController.swift in Sources */,
