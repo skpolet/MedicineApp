@@ -23,22 +23,21 @@ class TestMapController: UIViewController,CLLocationManagerDelegate {
             let position = touch.location(in: map)
             //print(position.x)
             let location = map.convert(position, toCoordinateFrom: map)
-            retreiveCityName(lattitude: location.latitude, longitude: location.longitude) { (nameCity) in
-                        print("nameCity\(String(describing: nameCity))")
+            retreiveCityName(lattitude: location.latitude, longitude: location.longitude) { (nameCity , nameRegion) in
+                        print("nameCity\(String(describing: nameCity)) and region \( String(describing: nameRegion))")
                     }
         }
     }
     
     
-    func retreiveCityName(lattitude: Double, longitude: Double, completionHandler: @escaping (String?) -> Void)
+    func retreiveCityName(lattitude: Double, longitude: Double, completionHandler: @escaping (String?, String?) -> Void)
     {
         let geocoder = CLGeocoder()
         geocoder.reverseGeocodeLocation(CLLocation(latitude: lattitude, longitude: longitude), completionHandler:
             {
                 placeMarks, error in
                 
-                completionHandler(placeMarks?.first?.locality)
-                completionHandler(placeMarks?.first?.administrativeArea)
+                completionHandler(placeMarks?.first?.locality ,placeMarks?.first?.administrativeArea)
         })
     }
 
