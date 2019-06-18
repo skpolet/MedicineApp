@@ -50,19 +50,19 @@
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="mjE-II-kuf">
                                 <rect key="frame" x="0.0" y="183" width="414" height="56"/>
                                 <color key="backgroundColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="barTintColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="barTintColor" red="0.89411764705882346" green="0.4392156862745098" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="gWn-VC-bvB">
                                 <rect key="frame" x="0.0" y="239" width="414" height="657"/>
                                 <color key="backgroundColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="sectionIndexBackgroundColor" red="0.89055418968200684" green="0.44031041860580444" blue="0.40371322631835938" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="sectionIndexBackgroundColor" red="0.8901960784313725" green="0.4392156862745098" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="locationCell" id="wx2-Hq-O1C">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="blue" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="locationCell" id="wx2-Hq-O1C">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="wx2-Hq-O1C" id="SvD-xb-ZLg">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="376" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -80,7 +80,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.89450699090957642" green="0.4403156042098999" blue="0.40371286869049072" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="backgroundColor" red="0.89411764705882346" green="0.4392156862745098" blue="0.40392156862745099" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="gWn-VC-bvB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3bW-m3-jx7"/>
                             <constraint firstAttribute="bottom" secondItem="gWn-VC-bvB" secondAttribute="bottom" id="Eph-Wv-GLw"/>
@@ -89,6 +89,7 @@
                             <constraint firstItem="xHJ-y2-Sy9" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="40" id="REX-vi-c0U"/>
                             <constraint firstItem="gWn-VC-bvB" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Zwi-Ky-iAE"/>
                             <constraint firstItem="mjE-II-kuf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="f09-cA-pGj"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="xHJ-y2-Sy9" secondAttribute="trailing" symbolic="YES" id="nDI-Yf-kIE"/>
                             <constraint firstItem="xHJ-y2-Sy9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="47" id="nfB-G3-jTH"/>
                             <constraint firstItem="mjE-II-kuf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="tWT-52-oVk"/>
                             <constraint firstItem="gWn-VC-bvB" firstAttribute="top" secondItem="mjE-II-kuf" secondAttribute="bottom" id="yxE-3K-bah"/>

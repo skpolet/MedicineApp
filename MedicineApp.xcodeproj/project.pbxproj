@@ -127,12 +127,12 @@
 		E1903E0922AA778100DEB9E0 /* MedicineApp */ = {
 			isa = PBXGroup;
 			children = (
-				E17A9F7022B96B3600044A8A /* SearchBar */,
 				E1903E0E22AA778100DEB9E0 /* Main.storyboard */,
+				E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */,
+				E17A9F7022B96B3600044A8A /* SearchBar */,
 				E1903E1F22AA77C700DEB9E0 /* ViewControllers */,
 				E1903E1E22AA77B900DEB9E0 /* Entity */,
 				E1903E1D22AA77AC00DEB9E0 /* Services */,
-				E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */,
 				E1903E1C22AA779C00DEB9E0 /* Coordinator */,
 				E1903E1122AA778800DEB9E0 /* Assets.xcassets */,
 				E1903E1322AA778800DEB9E0 /* LaunchScreen.storyboard */,

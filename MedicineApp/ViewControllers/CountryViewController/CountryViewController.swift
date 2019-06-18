@@ -14,6 +14,7 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
     @IBOutlet var tableView: UITableView!
     weak var coordinator: MainCoordinator?
     var locationList:LocationList?
+    var selectedIndexPath:IndexPath?
     
     func currentLocation(city: String?, region: String?) {
         let defaults = UserDefaults.standard
@@ -45,12 +46,19 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
             self.tableView.reloadData()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        guard let selected = selectedIndexPath else {
+            return
+        }
+        self.tableView.deselectRow(at: selected, animated: true)
+    }
 }
 
 extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let locations = locationList?.location
-        print(locations?.count ?? 9999)
         return locations?.count ?? 0
     }
     
@@ -61,7 +69,33 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
         let location: Location = (locations?[indexPath.row])!
         cell.textLabel?.text = location.title
         
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.orange
+        cell.selectedBackgroundView = backgroundView
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let locations = locationList?.location
+        let location: Location = (locations?[indexPath.row])!
+        
+        let defaults = UserDefaults.standard
+        defaults.set(location.title, forKey: "City")
+        self.selectedIndexPath = indexPath
+        coordinator?.toHome()
+    }
+    
+    
+//     func setSelected(_ selected: Bool, animated: Bool) {
+//        super.setSelected(selected, animated: animated)
+//
+//        if selected {
+//            contentView.backgroundColor = UIColor.green
+//        } else {
+//            contentView.backgroundColor = UIColor.blue
+//        }
+//    }
+    
 }
 
