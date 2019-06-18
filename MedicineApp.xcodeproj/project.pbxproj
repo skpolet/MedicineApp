@@ -16,8 +16,9 @@
 		E17A9F6422B8E24C00044A8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17A9F6322B8E24C00044A8A /* CoreLocation.framework */; };
 		E17A9F6722B8ECA000044A8A /* CountryViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6622B8ECA000044A8A /* CountryViewManager.swift */; };
 		E17A9F6922B91D0600044A8A /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6822B91D0600044A8A /* LocationLoader.swift */; };
-		E17A9F6B22B9350400044A8A /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6A22B9350400044A8A /* LocationList.swift */; };
 		E17A9F6D22B9351000044A8A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6C22B9351000044A8A /* Location.swift */; };
+		E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6E22B9601B00044A8A /* LocationList.swift */; };
+		E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F7122B96B5800044A8A /* SearchBar.swift */; };
 		E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */; };
 		E1903E1022AA778100DEB9E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1903E0E22AA778100DEB9E0 /* Main.storyboard */; };
 		E1903E1222AA778800DEB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1122AA778800DEB9E0 /* Assets.xcassets */; };
@@ -41,8 +42,9 @@
 		E17A9F6322B8E24C00044A8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		E17A9F6622B8ECA000044A8A /* CountryViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewManager.swift; sourceTree = "<group>"; };
 		E17A9F6822B91D0600044A8A /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
-		E17A9F6A22B9350400044A8A /* LocationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
 		E17A9F6C22B9351000044A8A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		E17A9F6E22B9601B00044A8A /* LocationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
+		E17A9F7122B96B5800044A8A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E1903E0722AA778100DEB9E0 /* MedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1903E0F22AA778100DEB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			path = CountryViewController;
 			sourceTree = "<group>";
 		};
+		E17A9F7022B96B3600044A8A /* SearchBar */ = {
+			isa = PBXGroup;
+			children = (
+				E17A9F7122B96B5800044A8A /* SearchBar.swift */,
+			);
+			path = SearchBar;
+			sourceTree = "<group>";
+		};
 		E1903DFE22AA778100DEB9E0 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +127,7 @@
 		E1903E0922AA778100DEB9E0 /* MedicineApp */ = {
 			isa = PBXGroup;
 			children = (
+				E17A9F7022B96B3600044A8A /* SearchBar */,
 				E1903E0E22AA778100DEB9E0 /* Main.storyboard */,
 				E1903E1F22AA77C700DEB9E0 /* ViewControllers */,
 				E1903E1E22AA77B900DEB9E0 /* Entity */,
@@ -152,8 +163,8 @@
 		E1903E1E22AA77B900DEB9E0 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
-				E17A9F6A22B9350400044A8A /* LocationList.swift */,
 				E17A9F6C22B9351000044A8A /* Location.swift */,
+				E17A9F6E22B9601B00044A8A /* LocationList.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -295,14 +306,15 @@
 			files = (
 				E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */,
 				E1E14B7422AA864800D11791 /* CountryViewController.swift in Sources */,
-				E17A9F6B22B9350400044A8A /* LocationList.swift in Sources */,
 				E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */,
 				E1E14B7C22AA86F100D11791 /* ClinicPricesViewController.swift in Sources */,
 				E1201FC722B7B04E0092C1C2 /* TestMapController.swift in Sources */,
+				E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */,
 				E1E14B7A22AA86C200D11791 /* ClinicViewController.swift in Sources */,
 				E17A9F6D22B9351000044A8A /* Location.swift in Sources */,
 				E1E14B7622AA867400D11791 /* HomeViewController.swift in Sources */,
 				E110C21722B7D2730074F39E /* Storyboarded.swift in Sources */,
+				E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */,
 				E1E14B7822AA86A200D11791 /* ClinicsListController.swift in Sources */,
 				E17A9F6722B8ECA000044A8A /* CountryViewManager.swift in Sources */,
 				E17A9F6922B91D0600044A8A /* LocationLoader.swift in Sources */,

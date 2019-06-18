@@ -11,6 +11,10 @@ import CoreLocation
 
 class CountryViewController: UIViewController, Storyboarded, LocationCoordinatble, CLLocationManagerDelegate {
 
+    @IBOutlet var tableView: UITableView!
+    weak var coordinator: MainCoordinator?
+    var locationList:LocationList?
+    
     func currentLocation(city: String?, region: String?) {
         let defaults = UserDefaults.standard
         defaults.set(city, forKey: "City")
@@ -31,24 +35,33 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
             self.present(alertController, animated: true, completion: nil)
        // }
     }
-    
-    weak var coordinator: MainCoordinator?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let locationLoader = LocationLoader()
+        locationLoader.getLocations { result in
+            self.locationList = result
+            self.tableView.reloadData()
+        }
     }
-
 }
 
-//extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        <#code#>
-//    }
-//    
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        <#code#>
-//    }
-//    
-//
-//}
+extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let locations = locationList?.location
+        print(locations?.count ?? 9999)
+        return locations?.count ?? 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell:UITableViewCell = (self.tableView.dequeueReusableCell(withIdentifier: "locationCell"))!
+        
+        let locations = locationList?.location
+        let location: Location = (locations?[indexPath.row])!
+        cell.textLabel?.text = location.title
+        
+        return cell
+    }
+}
 

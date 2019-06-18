@@ -6,7 +6,7 @@ target 'MedicineApp' do
   use_frameworks!
 
   # Pods for MedicineApp
-	pod 'Alamofire'
+	pod 'Alamofire', '~> 4.8.0'
   pod 'ObjectMapper'
 
 end
