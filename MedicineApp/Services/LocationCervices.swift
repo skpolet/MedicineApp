@@ -7,56 +7,45 @@
 //
 
 import Foundation
+import CoreLocation
 import MapKit
 
-typealias JSONDictionary = [String:Any]
+protocol LocationCoordinatble: AnyObject {
+    func currentLocation(city: String?, region: String?)
+}
 
-class LocationServices {
+class LocationServices : NSObject, CLLocationManagerDelegate {
     
-    let shared = LocationServices()
-    let locManager = CLLocationManager()
-    var currentLocation: CLLocation!
+    weak var delegate: LocationCoordinatble?
+    let locationManager = CLLocationManager()
     
-    let authStatus = CLLocationManager.authorizationStatus()
-    let inUse = CLAuthorizationStatus.authorizedWhenInUse
-    let always = CLAuthorizationStatus.authorizedAlways
-    
-    func getAdress(completion: @escaping (_ address: JSONDictionary?, _ error: Error?) -> ()) {
-        
-        self.locManager.requestWhenInUseAuthorization()
-        
-        if self.authStatus == inUse || self.authStatus == always {
-            
-            self.currentLocation = locManager.location
-            
-            let geoCoder = CLGeocoder()
-            
-            geoCoder.reverseGeocodeLocation(self.currentLocation) { placemarks, error in
-                
-                if let e = error {
-                    
-                    completion(nil, e)
-                    
-                } else {
-                    
-                    let placeArray = placemarks as? [CLPlacemark]
-                    
-                    var placeMark: CLPlacemark!
-                    
-                    placeMark = placeArray?[0]
-                    
-                    guard let address = placeMark.addressDictionary as? JSONDictionary else {
-                        return
-                    }
-                    
-                    completion(address, nil)
-                    
-                }
-                
-            }
-            
+    static let instance = LocationServices()
+    private override init(){
+        super.init()
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
         }
-        
     }
     
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        retreiveCityName(lattitude: locValue.latitude, longitude: locValue.longitude)
+    }
+    
+    func retreiveCityName(lattitude: Double, longitude: Double)
+    {
+        let geocoder = CLGeocoder()
+        geocoder.reverseGeocodeLocation(CLLocation(latitude: lattitude, longitude: longitude), completionHandler:
+            {
+                placeMarks, error in
+                self.delegate?.currentLocation(city: placeMarks?.first?.locality, region: placeMarks?.first?.administrativeArea)
+                self.locationManager.stopUpdatingLocation()
+        })
+    }
+
 }
