@@ -21,7 +21,6 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
         defaults.set(city, forKey: "City")
         defaults.set(region, forKey: "Region")
 
-        //if(String(describing: defaults.object(forKey: "City")) != nil || String(describing: defaults.object(forKey: "Region")) != nil){
             print("saved \(String(describing: defaults.object(forKey: "City"))) \n \(String(describing: defaults.object(forKey: "Region")))")
             
             let alertController = UIAlertController(title:String(describing: defaults.object(forKey: "City")), message: "Хотите искать клинику в этом регионе?", preferredStyle: .alert)
@@ -34,7 +33,6 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
                 defaults.removeObject(forKey: "Region")
             }))
             self.present(alertController, animated: true, completion: nil)
-       // }
     }
 
     override func viewDidLoad() {
@@ -47,12 +45,22 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         guard let selected = selectedIndexPath else {
             return
         }
         self.tableView.deselectRow(at: selected, animated: true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 }
 
@@ -85,17 +93,5 @@ extension CountryViewController: UITableViewDelegate, UITableViewDataSource {
         self.selectedIndexPath = indexPath
         coordinator?.toHome()
     }
-    
-    
-//     func setSelected(_ selected: Bool, animated: Bool) {
-//        super.setSelected(selected, animated: animated)
-//
-//        if selected {
-//            contentView.backgroundColor = UIColor.green
-//        } else {
-//            contentView.backgroundColor = UIColor.blue
-//        }
-//    }
-    
 }
 
