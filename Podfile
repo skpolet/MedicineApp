@@ -8,5 +8,6 @@ target 'MedicineApp' do
   # Pods for MedicineApp
 	pod 'Alamofire', '~> 4.8.0'
   pod 'ObjectMapper'
-
+  pod 'DeepDiff'
+  
 end

@@ -1,20 +1,24 @@
 PODS:
   - Alamofire (4.8.2)
+  - DeepDiff (2.2.0)
   - ObjectMapper (3.5.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.0)
+  - DeepDiff
   - ObjectMapper
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - DeepDiff
     - ObjectMapper
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  DeepDiff: e329bc46dd14ca788d8ec08d34420799ba1d77f2
   ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
 
-PODFILE CHECKSUM: 281249662159c3840f3d96cfb7d08f5f9c2b66aa
+PODFILE CHECKSUM: 59ea2f781ac309a769394d661b26143b0edc8ae1
 
-COCOAPODS: 1.6.1
+COCOAPODS: 1.7.2

@@ -9,9 +9,10 @@
 import UIKit
 import CoreLocation
 
-class CountryViewController: UIViewController, Storyboarded, LocationCoordinatble, CLLocationManagerDelegate {
+class CountryViewController: UIViewController, Storyboarded, LocationCoordinatble, CLLocationManagerDelegate, Searchable {
 
     @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
     weak var coordinator: MainCoordinator?
     var locationList:LocationList?
     var selectedIndexPath:IndexPath?
@@ -26,13 +27,17 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
             let alertController = UIAlertController(title:String(describing: defaults.object(forKey: "City")), message: "Хотите искать клинику в этом регионе?", preferredStyle: .alert)
 
             alertController.addAction(UIAlertAction.init(title: "Сохранить", style: .default, handler: { (save) in
-                
+                self.coordinator?.toHome()
             }))
             alertController.addAction(UIAlertAction.init(title: "Отмена", style: .destructive, handler: { (save) in
                 defaults.removeObject(forKey: "City")
                 defaults.removeObject(forKey: "Region")
             }))
             self.present(alertController, animated: true, completion: nil)
+    }
+    
+    func found(searchArr: NSArray) {
+        print("naideno:\(searchArr)")
     }
 
     override func viewDidLoad() {
@@ -42,6 +47,10 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
         locationLoader.getLocations { result in
             self.locationList = result
             self.tableView.reloadData()
+            
+            let locations = result.location
+            let searchBar  = SearchBar(items: locations! as NSArray, searchType: .countryArray, searchBar: self.searchBar)
+            searchBar.delegate = self
         }
     }
     
