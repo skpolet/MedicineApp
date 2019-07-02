@@ -50,7 +50,7 @@ class CountryViewController: UIViewController, Storyboarded, LocationCoordinatbl
             
             let locations = result.location
             let searchBar  = SearchBar(items: locations! as NSArray, searchType: .countryArray, searchBar: self.searchBar)
-            searchBar.delegate = self
+            searchBar.delegateSearch = self
         }
     }
     

@@ -23,22 +23,20 @@ class SearchBar: NSObject {
 
     let searchType : searchType
     var items : NSArray
-    let searchBar : UISearchBar
-    var delegate:Searchable?
+    var delegateSearch:Searchable?
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     init(items:NSArray, searchType:searchType, searchBar:UISearchBar){
         
         self.items = items
         self.searchType = searchType
-        self.searchBar = searchBar
         super.init()
-        searchBar.delegate = self;
+        searchBar.delegate = self
+        print("searchBar.delegate\(String(describing: searchBar))")
     }
-    
 }
 
 extension SearchBar: UISearchBarDelegate{
@@ -55,22 +53,21 @@ extension SearchBar: UISearchBarDelegate{
                     print(sortedDta)
                 }
             }else{
-                self.delegate?.found(searchArr:self.items)
+                self.delegateSearch?.found(searchArr:self.items)
             }
         }
         if(self.searchType == .clinicsArray){
             if(searchText.count > 0){
                 
             }else{
-                self.delegate?.found(searchArr:self.items)
+                self.delegateSearch?.found(searchArr:self.items)
             }
-            
         }
         if(self.searchType == .diseasesArray){
             if(searchText.count > 0){
                 
             }else{
-                self.delegate?.found(searchArr:self.items)
+                self.delegateSearch?.found(searchArr:self.items)
             }
         }
     }
@@ -81,7 +78,7 @@ extension SearchBar: UISearchBarDelegate{
         searchBar.resignFirstResponder()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.delegate?.found(searchArr:self.items)
+        self.delegateSearch?.found(searchArr:self.items)
         searchBar.showsCancelButton = true
         searchBar.resignFirstResponder()
     }
