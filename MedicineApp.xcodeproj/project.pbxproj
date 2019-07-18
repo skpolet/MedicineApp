@@ -3,59 +3,103 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B0EF6FC35435C410CEAD7061 /* Pods_MedicineApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E09189105694447DD42CC17 /* Pods_MedicineApp.framework */; };
-		E110C21322B7D1890074F39E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E110C21222B7D1890074F39E /* Coordinator.swift */; };
-		E110C21522B7D1DE0074F39E /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E110C21422B7D1DE0074F39E /* MainCoordinator.swift */; };
-		E110C21722B7D2730074F39E /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = E110C21622B7D2730074F39E /* Storyboarded.swift */; };
+		749787A2C22C35215B8CFA2F /* Pods_MedicineApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6523CED9844323C5C5C8E493 /* Pods_MedicineApp.framework */; };
+		E105ACE322DCABCC00368B23 /* UIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACE222DCABCC00368B23 /* UIStoryboard.swift */; };
+		E105ACE622DCAC3100368B23 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACE522DCAC3100368B23 /* Coordinator.swift */; };
+		E105ACEE22DCAD5B00368B23 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACED22DCAD5B00368B23 /* MainCoordinator.swift */; };
+		E105ACF022DCAE3200368B23 /* MapBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACEF22DCAE3200368B23 /* MapBuilder.swift */; };
+		E105ACF222DCAEB200368B23 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACF122DCAEB200368B23 /* MainTabBarController.swift */; };
+		E105ACF522DCAF3700368B23 /* SplashBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACF422DCAF3700368B23 /* SplashBuilder.swift */; };
+		E105ACF722DCAF6200368B23 /* Splash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105ACF622DCAF6200368B23 /* Splash.storyboard */; };
+		E105ACF922DCAF7700368B23 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACF822DCAF7700368B23 /* SplashViewController.swift */; };
+		E105ACFB22DCB04A00368B23 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACFA22DCB04A00368B23 /* MapViewModel.swift */; };
+		E105AD0022DCB1CD00368B23 /* SearchBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105ACFF22DCB1CD00368B23 /* SearchBuilder.swift */; };
+		E105AD0222DCB1DA00368B23 /* Search.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E105AD0122DCB1DA00368B23 /* Search.storyboard */; };
+		E105AD0422DCB1EE00368B23 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105AD0322DCB1EE00368B23 /* SearchViewController.swift */; };
+		E105AD0622DCB5CD00368B23 /* SearchCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E105AD0522DCB5CC00368B23 /* SearchCoordinator.swift */; };
 		E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1201FC422B7AB340092C1C2 /* LocationCervices.swift */; };
-		E1201FC722B7B04E0092C1C2 /* TestMapController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1201FC622B7B04E0092C1C2 /* TestMapController.swift */; };
+		E169502622DA2C4B009CFB46 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E169502522DA2C4B009CFB46 /* MapViewController.swift */; };
+		E169502A22DCA59C009CFB46 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E169502922DCA59C009CFB46 /* Map.storyboard */; };
 		E17A9F6422B8E24C00044A8A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E17A9F6322B8E24C00044A8A /* CoreLocation.framework */; };
-		E17A9F6722B8ECA000044A8A /* CountryViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6622B8ECA000044A8A /* CountryViewManager.swift */; };
 		E17A9F6922B91D0600044A8A /* LocationLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6822B91D0600044A8A /* LocationLoader.swift */; };
 		E17A9F6D22B9351000044A8A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6C22B9351000044A8A /* Location.swift */; };
 		E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6E22B9601B00044A8A /* LocationList.swift */; };
 		E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F7122B96B5800044A8A /* SearchBar.swift */; };
 		E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */; };
-		E1903E1022AA778100DEB9E0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1903E0E22AA778100DEB9E0 /* Main.storyboard */; };
 		E1903E1222AA778800DEB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1122AA778800DEB9E0 /* Assets.xcassets */; };
 		E1903E1522AA778800DEB9E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1322AA778800DEB9E0 /* LaunchScreen.storyboard */; };
-		E1E14B7422AA864800D11791 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E14B7322AA864800D11791 /* CountryViewController.swift */; };
-		E1E14B7622AA867400D11791 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E14B7522AA867400D11791 /* HomeViewController.swift */; };
-		E1E14B7822AA86A200D11791 /* ClinicsListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E14B7722AA86A200D11791 /* ClinicsListController.swift */; };
-		E1E14B7A22AA86C200D11791 /* ClinicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E14B7922AA86C200D11791 /* ClinicViewController.swift */; };
-		E1E14B7C22AA86F100D11791 /* ClinicPricesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E14B7B22AA86F100D11791 /* ClinicPricesViewController.swift */; };
+		E1ADD0EB22CF89E500A426C0 /* Shares.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EA22CF89E500A426C0 /* Shares.swift */; };
+		E1ADD0ED22CF8A0700A426C0 /* Clinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */; };
+		E1ADD0EF22CF8BA900A426C0 /* SharesAndClinicsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */; };
+		E1ADD0F322CF8EEA00A426C0 /* SharesAndClinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */; };
+		E1E1853122DCA69D008F5279 /* StoryboardNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1E1853022DCA69D008F5279 /* StoryboardNames.swift */; };
+		E1EFC1C722E08B8600F76FC6 /* MapCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1C622E08B8600F76FC6 /* MapCoordinator.swift */; };
+		E1EFC1CB22E0A04C00F76FC6 /* SharesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1CA22E0A04C00F76FC6 /* SharesBuilder.swift */; };
+		E1EFC1CD22E0A05E00F76FC6 /* Shares.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EFC1CC22E0A05E00F76FC6 /* Shares.storyboard */; };
+		E1EFC1CF22E0A07A00F76FC6 /* SharesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1CE22E0A07A00F76FC6 /* SharesViewController.swift */; };
+		E1EFC1D222E0A0B300F76FC6 /* RatingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1D122E0A0B300F76FC6 /* RatingsBuilder.swift */; };
+		E1EFC1D422E0A0BD00F76FC6 /* Ratings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EFC1D322E0A0BD00F76FC6 /* Ratings.storyboard */; };
+		E1EFC1D622E0A0D600F76FC6 /* RatingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1D522E0A0D600F76FC6 /* RatingsViewController.swift */; };
+		E1EFC1D922E0A21700F76FC6 /* CommentsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1D822E0A21700F76FC6 /* CommentsBuilder.swift */; };
+		E1EFC1DB22E0A24400F76FC6 /* Comments.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1EFC1DA22E0A24400F76FC6 /* Comments.storyboard */; };
+		E1EFC1DD22E0A29300F76FC6 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1DC22E0A29300F76FC6 /* CommentsViewController.swift */; };
+		E1EFC1DF22E0A47100F76FC6 /* SharesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1DE22E0A47100F76FC6 /* SharesCoordinator.swift */; };
+		E1EFC1E122E0A55700F76FC6 /* RatingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1E022E0A55700F76FC6 /* RatingsCoordinator.swift */; };
+		E1EFC1E322E0A63E00F76FC6 /* CommentsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1EFC1E222E0A63E00F76FC6 /* CommentsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6E09189105694447DD42CC17 /* Pods_MedicineApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicineApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		95499D98DC04E9A4245D5A33 /* Pods-MedicineApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicineApp.debug.xcconfig"; path = "Target Support Files/Pods-MedicineApp/Pods-MedicineApp.debug.xcconfig"; sourceTree = "<group>"; };
-		BA88E83BEC0A47C4531B1C5B /* Pods-MedicineApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicineApp.release.xcconfig"; path = "Target Support Files/Pods-MedicineApp/Pods-MedicineApp.release.xcconfig"; sourceTree = "<group>"; };
-		E110C21222B7D1890074F39E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		E110C21422B7D1DE0074F39E /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		E110C21622B7D2730074F39E /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
+		07B760912AB0554669D95B45 /* Pods-MedicineApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicineApp.debug.xcconfig"; path = "Target Support Files/Pods-MedicineApp/Pods-MedicineApp.debug.xcconfig"; sourceTree = "<group>"; };
+		34E6F47D4275B88EB695C368 /* Pods-MedicineApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MedicineApp.release.xcconfig"; path = "Target Support Files/Pods-MedicineApp/Pods-MedicineApp.release.xcconfig"; sourceTree = "<group>"; };
+		6523CED9844323C5C5C8E493 /* Pods_MedicineApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MedicineApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E105ACE222DCABCC00368B23 /* UIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStoryboard.swift; sourceTree = "<group>"; };
+		E105ACE522DCAC3100368B23 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E105ACED22DCAD5B00368B23 /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
+		E105ACEF22DCAE3200368B23 /* MapBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBuilder.swift; sourceTree = "<group>"; };
+		E105ACF122DCAEB200368B23 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		E105ACF422DCAF3700368B23 /* SplashBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashBuilder.swift; sourceTree = "<group>"; };
+		E105ACF622DCAF6200368B23 /* Splash.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Splash.storyboard; sourceTree = "<group>"; };
+		E105ACF822DCAF7700368B23 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		E105ACFA22DCB04A00368B23 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		E105ACFF22DCB1CD00368B23 /* SearchBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBuilder.swift; sourceTree = "<group>"; };
+		E105AD0122DCB1DA00368B23 /* Search.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Search.storyboard; sourceTree = "<group>"; };
+		E105AD0322DCB1EE00368B23 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		E105AD0522DCB5CC00368B23 /* SearchCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCoordinator.swift; sourceTree = "<group>"; };
 		E1201FC422B7AB340092C1C2 /* LocationCervices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCervices.swift; sourceTree = "<group>"; };
-		E1201FC622B7B04E0092C1C2 /* TestMapController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestMapController.swift; sourceTree = "<group>"; };
+		E169502522DA2C4B009CFB46 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		E169502922DCA59C009CFB46 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		E17A9F6322B8E24C00044A8A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		E17A9F6622B8ECA000044A8A /* CountryViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewManager.swift; sourceTree = "<group>"; };
 		E17A9F6822B91D0600044A8A /* LocationLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationLoader.swift; sourceTree = "<group>"; };
 		E17A9F6C22B9351000044A8A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E17A9F6E22B9601B00044A8A /* LocationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
 		E17A9F7122B96B5800044A8A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		E1903E0722AA778100DEB9E0 /* MedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E1903E0F22AA778100DEB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E1903E1122AA778800DEB9E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E1903E1422AA778800DEB9E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E1903E1622AA778800DEB9E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E1E14B7322AA864800D11791 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
-		E1E14B7522AA867400D11791 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		E1E14B7722AA86A200D11791 /* ClinicsListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsListController.swift; sourceTree = "<group>"; };
-		E1E14B7922AA86C200D11791 /* ClinicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicViewController.swift; sourceTree = "<group>"; };
-		E1E14B7B22AA86F100D11791 /* ClinicPricesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicPricesViewController.swift; sourceTree = "<group>"; };
+		E1ADD0EA22CF89E500A426C0 /* Shares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shares.swift; sourceTree = "<group>"; };
+		E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinics.swift; sourceTree = "<group>"; };
+		E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesAndClinicsLoader.swift; sourceTree = "<group>"; };
+		E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesAndClinics.swift; sourceTree = "<group>"; };
+		E1E1853022DCA69D008F5279 /* StoryboardNames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryboardNames.swift; sourceTree = "<group>"; };
+		E1EFC1C622E08B8600F76FC6 /* MapCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCoordinator.swift; sourceTree = "<group>"; };
+		E1EFC1CA22E0A04C00F76FC6 /* SharesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesBuilder.swift; sourceTree = "<group>"; };
+		E1EFC1CC22E0A05E00F76FC6 /* Shares.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Shares.storyboard; sourceTree = "<group>"; };
+		E1EFC1CE22E0A07A00F76FC6 /* SharesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesViewController.swift; sourceTree = "<group>"; };
+		E1EFC1D122E0A0B300F76FC6 /* RatingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsBuilder.swift; sourceTree = "<group>"; };
+		E1EFC1D322E0A0BD00F76FC6 /* Ratings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Ratings.storyboard; sourceTree = "<group>"; };
+		E1EFC1D522E0A0D600F76FC6 /* RatingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsViewController.swift; sourceTree = "<group>"; };
+		E1EFC1D822E0A21700F76FC6 /* CommentsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsBuilder.swift; sourceTree = "<group>"; };
+		E1EFC1DA22E0A24400F76FC6 /* Comments.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Comments.storyboard; sourceTree = "<group>"; };
+		E1EFC1DC22E0A29300F76FC6 /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		E1EFC1DE22E0A47100F76FC6 /* SharesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesCoordinator.swift; sourceTree = "<group>"; };
+		E1EFC1E022E0A55700F76FC6 /* RatingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsCoordinator.swift; sourceTree = "<group>"; };
+		E1EFC1E222E0A63E00F76FC6 /* CommentsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,7 +108,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E17A9F6422B8E24C00044A8A /* CoreLocation.framework in Frameworks */,
-				B0EF6FC35435C410CEAD7061 /* Pods_MedicineApp.framework in Frameworks */,
+				749787A2C22C35215B8CFA2F /* Pods_MedicineApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,28 +118,76 @@
 		8FBE571A54188C5FFAFFD7EF /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				95499D98DC04E9A4245D5A33 /* Pods-MedicineApp.debug.xcconfig */,
-				BA88E83BEC0A47C4531B1C5B /* Pods-MedicineApp.release.xcconfig */,
+				07B760912AB0554669D95B45 /* Pods-MedicineApp.debug.xcconfig */,
+				34E6F47D4275B88EB695C368 /* Pods-MedicineApp.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		E105ACDC22DCA9DF00368B23 /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACE422DCAC1500368B23 /* CoordinatorProtocol */,
+				E105ACED22DCAD5B00368B23 /* MainCoordinator.swift */,
+				E105AD0522DCB5CC00368B23 /* SearchCoordinator.swift */,
+				E1EFC1C622E08B8600F76FC6 /* MapCoordinator.swift */,
+				E1EFC1DE22E0A47100F76FC6 /* SharesCoordinator.swift */,
+				E1EFC1E022E0A55700F76FC6 /* RatingsCoordinator.swift */,
+				E1EFC1E222E0A63E00F76FC6 /* CommentsCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		E105ACDF22DCAB5E00368B23 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		E105ACE122DCAB8800368B23 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACE222DCABCC00368B23 /* UIStoryboard.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E105ACE422DCAC1500368B23 /* CoordinatorProtocol */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACE522DCAC3100368B23 /* Coordinator.swift */,
+			);
+			path = CoordinatorProtocol;
+			sourceTree = "<group>";
+		};
+		E105ACF322DCAF2100368B23 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACF422DCAF3700368B23 /* SplashBuilder.swift */,
+				E105ACF622DCAF6200368B23 /* Splash.storyboard */,
+				E105ACF822DCAF7700368B23 /* SplashViewController.swift */,
+			);
+			path = Splash;
+			sourceTree = "<group>";
+		};
+		E105ACFE22DCB1B900368B23 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACFF22DCB1CD00368B23 /* SearchBuilder.swift */,
+				E105AD0122DCB1DA00368B23 /* Search.storyboard */,
+				E105AD0322DCB1EE00368B23 /* SearchViewController.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 		E17A9F6222B8E24C00044A8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				E17A9F6322B8E24C00044A8A /* CoreLocation.framework */,
-				6E09189105694447DD42CC17 /* Pods_MedicineApp.framework */,
+				6523CED9844323C5C5C8E493 /* Pods_MedicineApp.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		E17A9F6522B8EC6E00044A8A /* CountryViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E1E14B7322AA864800D11791 /* CountryViewController.swift */,
-				E17A9F6622B8ECA000044A8A /* CountryViewManager.swift */,
-			);
-			path = CountryViewController;
 			sourceTree = "<group>";
 		};
 		E17A9F7022B96B3600044A8A /* SearchBar */ = {
@@ -127,13 +219,15 @@
 		E1903E0922AA778100DEB9E0 /* MedicineApp */ = {
 			isa = PBXGroup;
 			children = (
-				E1903E0E22AA778100DEB9E0 /* Main.storyboard */,
 				E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */,
+				E105ACE122DCAB8800368B23 /* Extensions */,
+				E105ACDF22DCAB5E00368B23 /* Resources */,
+				E105ACDC22DCA9DF00368B23 /* Coordinators */,
+				E1E1852F22DCA66B008F5279 /* Supporting */,
 				E17A9F7022B96B3600044A8A /* SearchBar */,
-				E1903E1F22AA77C700DEB9E0 /* ViewControllers */,
+				E1903E1F22AA77C700DEB9E0 /* Scenes */,
 				E1903E1E22AA77B900DEB9E0 /* Entity */,
 				E1903E1D22AA77AC00DEB9E0 /* Services */,
-				E1903E1C22AA779C00DEB9E0 /* Coordinator */,
 				E1903E1122AA778800DEB9E0 /* Assets.xcassets */,
 				E1903E1322AA778800DEB9E0 /* LaunchScreen.storyboard */,
 				E1903E1622AA778800DEB9E0 /* Info.plist */,
@@ -141,21 +235,12 @@
 			path = MedicineApp;
 			sourceTree = "<group>";
 		};
-		E1903E1C22AA779C00DEB9E0 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				E110C21222B7D1890074F39E /* Coordinator.swift */,
-				E110C21422B7D1DE0074F39E /* MainCoordinator.swift */,
-				E110C21622B7D2730074F39E /* Storyboarded.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
 		E1903E1D22AA77AC00DEB9E0 /* Services */ = {
 			isa = PBXGroup;
 			children = (
 				E1201FC422B7AB340092C1C2 /* LocationCervices.swift */,
 				E17A9F6822B91D0600044A8A /* LocationLoader.swift */,
+				E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -165,21 +250,82 @@
 			children = (
 				E17A9F6C22B9351000044A8A /* Location.swift */,
 				E17A9F6E22B9601B00044A8A /* LocationList.swift */,
+				E1ADD0EA22CF89E500A426C0 /* Shares.swift */,
+				E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */,
+				E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
 		};
-		E1903E1F22AA77C700DEB9E0 /* ViewControllers */ = {
+		E1903E1F22AA77C700DEB9E0 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				E17A9F6522B8EC6E00044A8A /* CountryViewController */,
-				E1E14B7722AA86A200D11791 /* ClinicsListController.swift */,
-				E1E14B7522AA867400D11791 /* HomeViewController.swift */,
-				E1E14B7922AA86C200D11791 /* ClinicViewController.swift */,
-				E1E14B7B22AA86F100D11791 /* ClinicPricesViewController.swift */,
-				E1201FC622B7B04E0092C1C2 /* TestMapController.swift */,
+				E1EFC1D722E0A1C500F76FC6 /* Comments */,
+				E1EFC1D022E0A09F00F76FC6 /* Ratings */,
+				E1EFC1C922E09F5F00F76FC6 /* Shares */,
+				E1EFC1C822E09F1C00F76FC6 /* MainTabBar */,
+				E105ACFE22DCB1B900368B23 /* Search */,
+				E105ACF322DCAF2100368B23 /* Splash */,
+				E1E367E722DA2B920011F73B /* Map */,
 			);
-			path = ViewControllers;
+			path = Scenes;
+			sourceTree = "<group>";
+		};
+		E1E1852F22DCA66B008F5279 /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				E1E1853022DCA69D008F5279 /* StoryboardNames.swift */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		E1E367E722DA2B920011F73B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				E169502522DA2C4B009CFB46 /* MapViewController.swift */,
+				E169502922DCA59C009CFB46 /* Map.storyboard */,
+				E105ACEF22DCAE3200368B23 /* MapBuilder.swift */,
+				E105ACFA22DCB04A00368B23 /* MapViewModel.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		E1EFC1C822E09F1C00F76FC6 /* MainTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				E105ACF122DCAEB200368B23 /* MainTabBarController.swift */,
+			);
+			path = MainTabBar;
+			sourceTree = "<group>";
+		};
+		E1EFC1C922E09F5F00F76FC6 /* Shares */ = {
+			isa = PBXGroup;
+			children = (
+				E1EFC1CA22E0A04C00F76FC6 /* SharesBuilder.swift */,
+				E1EFC1CC22E0A05E00F76FC6 /* Shares.storyboard */,
+				E1EFC1CE22E0A07A00F76FC6 /* SharesViewController.swift */,
+			);
+			path = Shares;
+			sourceTree = "<group>";
+		};
+		E1EFC1D022E0A09F00F76FC6 /* Ratings */ = {
+			isa = PBXGroup;
+			children = (
+				E1EFC1D122E0A0B300F76FC6 /* RatingsBuilder.swift */,
+				E1EFC1D322E0A0BD00F76FC6 /* Ratings.storyboard */,
+				E1EFC1D522E0A0D600F76FC6 /* RatingsViewController.swift */,
+			);
+			path = Ratings;
+			sourceTree = "<group>";
+		};
+		E1EFC1D722E0A1C500F76FC6 /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				E1EFC1D822E0A21700F76FC6 /* CommentsBuilder.swift */,
+				E1EFC1DA22E0A24400F76FC6 /* Comments.storyboard */,
+				E1EFC1DC22E0A29300F76FC6 /* CommentsViewController.swift */,
+			);
+			path = Comments;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,11 +335,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E1903E1922AA778800DEB9E0 /* Build configuration list for PBXNativeTarget "MedicineApp" */;
 			buildPhases = (
-				E5001A25E52B17AFE4037464 /* [CP] Check Pods Manifest.lock */,
+				A0CFCDD17FC71CD3AB2F9E32 /* [CP] Check Pods Manifest.lock */,
 				E1903E0322AA778100DEB9E0 /* Sources */,
 				E1903E0422AA778100DEB9E0 /* Frameworks */,
 				E1903E0522AA778100DEB9E0 /* Resources */,
-				4FEA6F7B6A01CFE24ED0B43E /* [CP] Embed Pods Frameworks */,
+				378A411F35253DE67F4FD472 /* [CP] Embed Pods Frameworks */,
+				56E6C8A698BA536BE5718C69 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -242,16 +389,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1EFC1DB22E0A24400F76FC6 /* Comments.storyboard in Resources */,
+				E169502A22DCA59C009CFB46 /* Map.storyboard in Resources */,
+				E1EFC1D422E0A0BD00F76FC6 /* Ratings.storyboard in Resources */,
 				E1903E1522AA778800DEB9E0 /* LaunchScreen.storyboard in Resources */,
 				E1903E1222AA778800DEB9E0 /* Assets.xcassets in Resources */,
-				E1903E1022AA778100DEB9E0 /* Main.storyboard in Resources */,
+				E105ACF722DCAF6200368B23 /* Splash.storyboard in Resources */,
+				E105AD0222DCB1DA00368B23 /* Search.storyboard in Resources */,
+				E1EFC1CD22E0A05E00F76FC6 /* Shares.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4FEA6F7B6A01CFE24ED0B43E /* [CP] Embed Pods Frameworks */ = {
+		378A411F35253DE67F4FD472 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -268,7 +420,24 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MedicineApp/Pods-MedicineApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E5001A25E52B17AFE4037464 /* [CP] Check Pods Manifest.lock */ = {
+		56E6C8A698BA536BE5718C69 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MedicineApp/Pods-MedicineApp-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MedicineApp/Pods-MedicineApp-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MedicineApp/Pods-MedicineApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A0CFCDD17FC71CD3AB2F9E32 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -297,36 +466,45 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E105ACF522DCAF3700368B23 /* SplashBuilder.swift in Sources */,
+				E1EFC1CF22E0A07A00F76FC6 /* SharesViewController.swift in Sources */,
+				E1EFC1E322E0A63E00F76FC6 /* CommentsCoordinator.swift in Sources */,
 				E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */,
-				E1E14B7422AA864800D11791 /* CountryViewController.swift in Sources */,
 				E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */,
-				E1E14B7C22AA86F100D11791 /* ClinicPricesViewController.swift in Sources */,
-				E1201FC722B7B04E0092C1C2 /* TestMapController.swift in Sources */,
+				E1ADD0ED22CF8A0700A426C0 /* Clinics.swift in Sources */,
+				E1ADD0EB22CF89E500A426C0 /* Shares.swift in Sources */,
+				E105AD0022DCB1CD00368B23 /* SearchBuilder.swift in Sources */,
+				E169502622DA2C4B009CFB46 /* MapViewController.swift in Sources */,
+				E1EFC1CB22E0A04C00F76FC6 /* SharesBuilder.swift in Sources */,
+				E105ACFB22DCB04A00368B23 /* MapViewModel.swift in Sources */,
+				E105ACF022DCAE3200368B23 /* MapBuilder.swift in Sources */,
+				E1EFC1E122E0A55700F76FC6 /* RatingsCoordinator.swift in Sources */,
+				E105ACEE22DCAD5B00368B23 /* MainCoordinator.swift in Sources */,
+				E1E1853122DCA69D008F5279 /* StoryboardNames.swift in Sources */,
+				E1ADD0F322CF8EEA00A426C0 /* SharesAndClinics.swift in Sources */,
 				E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */,
-				E1E14B7A22AA86C200D11791 /* ClinicViewController.swift in Sources */,
 				E17A9F6D22B9351000044A8A /* Location.swift in Sources */,
-				E1E14B7622AA867400D11791 /* HomeViewController.swift in Sources */,
-				E110C21722B7D2730074F39E /* Storyboarded.swift in Sources */,
+				E105ACF922DCAF7700368B23 /* SplashViewController.swift in Sources */,
+				E1EFC1DD22E0A29300F76FC6 /* CommentsViewController.swift in Sources */,
+				E105AD0422DCB1EE00368B23 /* SearchViewController.swift in Sources */,
+				E1EFC1C722E08B8600F76FC6 /* MapCoordinator.swift in Sources */,
+				E1EFC1DF22E0A47100F76FC6 /* SharesCoordinator.swift in Sources */,
 				E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */,
-				E1E14B7822AA86A200D11791 /* ClinicsListController.swift in Sources */,
-				E17A9F6722B8ECA000044A8A /* CountryViewManager.swift in Sources */,
+				E105ACE622DCAC3100368B23 /* Coordinator.swift in Sources */,
+				E1EFC1D922E0A21700F76FC6 /* CommentsBuilder.swift in Sources */,
+				E105AD0622DCB5CD00368B23 /* SearchCoordinator.swift in Sources */,
 				E17A9F6922B91D0600044A8A /* LocationLoader.swift in Sources */,
-				E110C21522B7D1DE0074F39E /* MainCoordinator.swift in Sources */,
-				E110C21322B7D1890074F39E /* Coordinator.swift in Sources */,
+				E105ACF222DCAEB200368B23 /* MainTabBarController.swift in Sources */,
+				E105ACE322DCABCC00368B23 /* UIStoryboard.swift in Sources */,
+				E1EFC1D222E0A0B300F76FC6 /* RatingsBuilder.swift in Sources */,
+				E1ADD0EF22CF8BA900A426C0 /* SharesAndClinicsLoader.swift in Sources */,
+				E1EFC1D622E0A0D600F76FC6 /* RatingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E1903E0E22AA778100DEB9E0 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E1903E0F22AA778100DEB9E0 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E1903E1322AA778800DEB9E0 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -456,7 +634,7 @@
 		};
 		E1903E1A22AA778800DEB9E0 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 95499D98DC04E9A4245D5A33 /* Pods-MedicineApp.debug.xcconfig */;
+			baseConfigurationReference = 07B760912AB0554669D95B45 /* Pods-MedicineApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -468,6 +646,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = Agregator.MedicineApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -475,7 +654,7 @@
 		};
 		E1903E1B22AA778800DEB9E0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BA88E83BEC0A47C4531B1C5B /* Pods-MedicineApp.release.xcconfig */;
+			baseConfigurationReference = 34E6F47D4275B88EB695C368 /* Pods-MedicineApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

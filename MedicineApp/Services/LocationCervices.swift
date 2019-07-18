@@ -12,6 +12,12 @@ import MapKit
 
 protocol LocationCoordinatble: AnyObject {
     func currentLocation(city: String?, region: String?)
+    func currentLocation(longitude: Double?, latitude: Double?)
+}
+
+extension LocationCoordinatble {
+    func currentLocation(city: String?, region: String?) {}
+    func currentLocation(longitude: Double?, latitude: Double?) {}
 }
 
 class LocationServices : NSObject, CLLocationManagerDelegate {
@@ -35,6 +41,7 @@ class LocationServices : NSObject, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         retreiveCityName(lattitude: locValue.latitude, longitude: locValue.longitude)
+        delegate?.currentLocation(longitude: locValue.longitude, latitude: locValue.latitude)
     }
     
     func retreiveCityName(lattitude: Double, longitude: Double)

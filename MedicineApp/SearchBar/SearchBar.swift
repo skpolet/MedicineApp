@@ -35,7 +35,6 @@ class SearchBar: NSObject {
         self.searchType = searchType
         super.init()
         searchBar.delegate = self
-        print("searchBar.delegate\(String(describing: searchBar))")
     }
 }
 
@@ -45,13 +44,13 @@ extension SearchBar: UISearchBarDelegate{
         print(searchText)
         if(self.searchType == .countryArray){
             if(searchText.count > 0){
-                let resultPredicate = NSPredicate(format: "title contains[c] %@", searchText)
-                if let sortedDta = items.filtered(using: resultPredicate) as? NSArray {
+                //let resultPredicate = NSPredicate(format: "title contains[c] %@", searchText)
+                //if let sortedDta = items.filtered(using: resultPredicate) as? NSArray {
                     
                     //enter code here.
                     
-                    print(sortedDta)
-                }
+                //    print(sortedDta)
+            //    }
             }else{
                 self.delegateSearch?.found(searchArr:self.items)
             }
