@@ -19,6 +19,7 @@ class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.delegate = self
         setTabBarItemsToViewControllers()
         startViewControllers()
         viewControllers = [mapCoordinator.navigationController,servicesCoordinator.navigationController,sharesCoordinator.navigationController,ratingsCoordinator.navigationController,commentsCoordinator.navigationController]
