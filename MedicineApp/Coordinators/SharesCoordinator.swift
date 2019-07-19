@@ -30,8 +30,7 @@ class SharesCoordinator: Coordinator{
     // MARK: UITabBarItem
     
     func setTabBarItem(){
-        //shares.vc?.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        self.navigationController.tabBarItem.title = "Отзывы"
+        shares.vc?.tabBarItem = UITabBarItem(title: "Акции", image: UIImage(named: "favorites"), tag: 3)
     }
     
 }

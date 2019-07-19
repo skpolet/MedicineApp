@@ -30,8 +30,7 @@ import UIKit
     // MARK: UITabBarItem
     
     func setTabBarItem(){
-        //searchVC.vc?.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
-        self.navigationController.tabBarItem.title = "Поиск"
+        searchVC.vc?.tabBarItem = UITabBarItem(title: "Поиск", image: UIImage(named: "loupe"), tag: 2)
     }
     
 }

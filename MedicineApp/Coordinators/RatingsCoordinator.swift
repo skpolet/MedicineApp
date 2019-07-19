@@ -30,8 +30,8 @@ class RatingsCoordinator: Coordinator{
     // MARK: UITabBarItem
     
     func setTabBarItem(){
-        //ratings.vc?.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        self.navigationController.tabBarItem.title = "Рейтинги"
+        ratings.vc?.tabBarItem = UITabBarItem(title: "Рейтинги", image: UIImage(named: "podium"), tag: 5)
+
     }
     
 }

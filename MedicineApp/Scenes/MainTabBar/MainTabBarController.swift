@@ -11,21 +11,24 @@ import UIKit
 class MainTabBarController: UITabBarController {
     
     let mapCoordinator = MapCoordinator(navigationController: UINavigationController())
-    let searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
+    //let searchCoordinator = SearchCoordinator(navigationController: UINavigationController())
     let sharesCoordinator = SharesCoordinator(navigationController: UINavigationController())
     let ratingsCoordinator = RatingsCoordinator(navigationController: UINavigationController())
     let commentsCoordinator = CommentsCoordinator(navigationController: UINavigationController())
+    let servicesCoordinator = MedServicesCoordinator(navigationController: UINavigationController())
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setTabBarItemsToViewControllers()
         startViewControllers()
-        viewControllers = [mapCoordinator.navigationController, searchCoordinator.navigationController,sharesCoordinator.navigationController,ratingsCoordinator.navigationController,commentsCoordinator.navigationController]
+        viewControllers = [mapCoordinator.navigationController,servicesCoordinator.navigationController,sharesCoordinator.navigationController,ratingsCoordinator.navigationController,commentsCoordinator.navigationController]
+        self.tabBar.tintColor = UIColor.red
     }
     
     func startViewControllers(){
         mapCoordinator.start()
-        searchCoordinator.start()
+        servicesCoordinator.start()
+        //searchCoordinator.start()
         sharesCoordinator.start()
         ratingsCoordinator.start()
         commentsCoordinator.start()
@@ -33,7 +36,8 @@ class MainTabBarController: UITabBarController {
     
     func setTabBarItemsToViewControllers(){
         mapCoordinator.setTabBarItem()
-        searchCoordinator.setTabBarItem()
+        servicesCoordinator.setTabBarItem()
+        //searchCoordinator.setTabBarItem()
         sharesCoordinator.setTabBarItem()
         ratingsCoordinator.setTabBarItem()
         commentsCoordinator.setTabBarItem()

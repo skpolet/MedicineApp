@@ -10,16 +10,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Shares View Controller-->
-        <scene sceneID="xHW-rJ-v0u">
+        <!--Med Services View Controller-->
+        <scene sceneID="BnY-FB-5fO">
             <objects>
-                <viewController storyboardIdentifier="SharesViewController" id="Wiw-jU-oU2" customClass="SharesViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nAZ-Wq-9hp">
+                <viewController storyboardIdentifier="MedServicesViewController" id="vBu-yY-XiD" customClass="MedServicesViewController" customModule="MedicineApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wil-uo-8PD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SharesVC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qx-Og-jy7">
-                                <rect key="frame" x="169.5" y="437.5" width="75" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MedServicesVC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wFq-M1-oTd">
+                                <rect key="frame" x="146.5" y="437.5" width="121" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -27,15 +27,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="3qx-Og-jy7" firstAttribute="centerX" secondItem="nAZ-Wq-9hp" secondAttribute="centerX" id="0C5-DP-LEJ"/>
-                            <constraint firstItem="3qx-Og-jy7" firstAttribute="centerY" secondItem="nAZ-Wq-9hp" secondAttribute="centerY" id="8lt-xn-Txp"/>
+                            <constraint firstItem="wFq-M1-oTd" firstAttribute="centerX" secondItem="wil-uo-8PD" secondAttribute="centerX" id="2us-Hx-HZh"/>
+                            <constraint firstItem="wFq-M1-oTd" firstAttribute="centerY" secondItem="wil-uo-8PD" secondAttribute="centerY" id="hU7-8l-njw"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="AuC-nx-tpN"/>
+                        <viewLayoutGuide key="safeArea" id="5Va-DN-OzO"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="kAB-t3-f3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7O3-1q-N8M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="29" y="-1"/>
+            <point key="canvasLocation" x="104" y="64"/>
         </scene>
     </scenes>
 </document>

@@ -30,8 +30,7 @@ class CommentsCoordinator: Coordinator{
     // MARK: UITabBarItem
     
     func setTabBarItem(){
-        //self.navigationController.tabBarItem = UITabBarItem(tabBarSystemItem: .history, tag: 1)
-        self.navigationController.tabBarItem.title = "Комментарии"
+        comments.vc?.tabBarItem = UITabBarItem(title: "Комментарии", image: UIImage(named: "chat"), tag: 5)
     }
     
 }

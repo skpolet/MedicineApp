@@ -98,6 +98,7 @@ public class JKBottomSearchView: UIView{
         self.minimalYPosition = windowFrame.height - frame.height
         self.maximalYPosition = frame.origin.y
         super.init(frame: frame)
+
         setupView()
     }
 

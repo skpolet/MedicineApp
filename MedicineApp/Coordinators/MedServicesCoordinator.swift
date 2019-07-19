@@ -1,14 +1,14 @@
 //
-//  MapCoordinator.swift
+//  MedServicesCoordinator.swift
 //  MedicineApp
 //
-//  Created by Sergey Mikhailov on 18/07/2019.
+//  Created by Sergey Mikhailov on 19/07/2019.
 //  Copyright © 2019 Medicine App. All rights reserved.
 //
 
 import UIKit
 
-class MapCoordinator: Coordinator{
+class MedServicesCoordinator: Coordinator{
     
     weak var parentCoordinator: MainCoordinator?
     
@@ -16,11 +16,11 @@ class MapCoordinator: Coordinator{
     
     var navigationController: UINavigationController
     
-    let mapVC = MapBuilder()
+    let services = MedServicesBuilder()
     
     func start() {
-        mapVC.vc?.coordinator = self
-        navigationController.pushViewController(mapVC.vc!, animated: true)
+        services.vc?.coordinator = self
+        navigationController.pushViewController(services.vc!, animated: true)
     }
     
     init(navigationController: UINavigationController) {
@@ -30,7 +30,7 @@ class MapCoordinator: Coordinator{
     // MARK: UITabBarItem
     
     func setTabBarItem(){
-        mapVC.vc?.tabBarItem = UITabBarItem(title: "Клиники", image: UIImage(named: "hospital"), tag: 1)
+        services.vc?.tabBarItem = UITabBarItem(title: "Услуги", image: UIImage(named: "clipboard"), tag: 5)
     }
     
 }
