@@ -40,6 +40,7 @@
 		E17A9F6D22B9351000044A8A /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6C22B9351000044A8A /* Location.swift */; };
 		E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F6E22B9601B00044A8A /* LocationList.swift */; };
 		E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17A9F7122B96B5800044A8A /* SearchBar.swift */; };
+		E17BA88922F8515200811E63 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E17BA88822F8515200811E63 /* UIApplication.swift */; };
 		E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */; };
 		E1903E1222AA778800DEB9E0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1122AA778800DEB9E0 /* Assets.xcassets */; };
 		E1903E1522AA778800DEB9E0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E1903E1322AA778800DEB9E0 /* LaunchScreen.storyboard */; };
@@ -99,6 +100,7 @@
 		E17A9F6C22B9351000044A8A /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		E17A9F6E22B9601B00044A8A /* LocationList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationList.swift; sourceTree = "<group>"; };
 		E17A9F7122B96B5800044A8A /* SearchBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
+		E17BA88822F8515200811E63 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		E1903E0722AA778100DEB9E0 /* MedicineApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MedicineApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1903E0A22AA778100DEB9E0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E1903E1122AA778800DEB9E0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -173,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				E105ACE222DCABCC00368B23 /* UIStoryboard.swift */,
+				E17BA88822F8515200811E63 /* UIApplication.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -544,6 +547,7 @@
 				E17A9F6922B91D0600044A8A /* LocationLoader.swift in Sources */,
 				E105ACF222DCAEB200368B23 /* MainTabBarController.swift in Sources */,
 				E105ACE322DCABCC00368B23 /* UIStoryboard.swift in Sources */,
+				E17BA88922F8515200811E63 /* UIApplication.swift in Sources */,
 				E15ADDCF22E1FACA005AA60A /* SharesViewModel.swift in Sources */,
 				E1EFC1D222E0A0B300F76FC6 /* RatingsBuilder.swift in Sources */,
 				E1ADD0EF22CF8BA900A426C0 /* SharesAndClinicsLoader.swift in Sources */,

@@ -12,6 +12,7 @@ public enum JKBottomSearchViewExpandingState{
     case fullyExpanded
     case middle
     case fullyCollapsed
+    case closed
 }
 
 public typealias JKBottomSearchViewDelegate = UISearchBarDelegate & UITableViewDelegate
@@ -57,7 +58,7 @@ public class JKBottomSearchView: UIView{
     private var searchBar:UISearchBar!
     private var proxy = SearchBarProxy()
     private let blurView:UIVisualEffectView! = UIVisualEffectView(effect:nil)
-    private var currentExpandedState: JKBottomSearchViewExpandingState = .fullyCollapsed
+    public var currentExpandedState: JKBottomSearchViewExpandingState = .fullyCollapsed
     private var startedDraggingOnSearchBar = false
 
     //MARK: - Search Bar Customization
@@ -223,6 +224,9 @@ public class JKBottomSearchView: UIView{
                 self.tableView.isScrollEnabled = false
             case .fullyCollapsed:
                 self.frame.origin.y = self.maximalYPosition
+                self.tableView.isScrollEnabled = false
+            case .closed:
+                self.frame.origin.y = self.maximalYPosition + 100
                 self.tableView.isScrollEnabled = false
             }
         }

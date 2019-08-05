@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    
     // MARK: Initial Coordinator Setup
     
     func initWithSplash(){

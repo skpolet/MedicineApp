@@ -8,22 +8,33 @@ target 'MedicineApp' do
   # Pods for MedicineApp
   # библиотека для работы с сетью
 	pod 'Alamofire', '~> 4.8.0'
+  
   # библиотека для маппинга
   pod 'ObjectMapper'
+  
   # билиотека для сравнивания массивов
   pod 'DeepDiff'
+  
   # библиотека для анимации вкладок
   # pod 'XLPagerTabStrip'
+  
   # google maps
   pod 'GoogleMaps'
   pod 'GooglePlaces'
+  
   # сепаратор для uitableview
   # pod 'VENSeparatorView'
+  
   # события для uitableview
   # pod 'StatefulTableView'
+  
   # вью поверх карты с таблицей и поисковиком
   pod 'JKBottomSearchView'
+  
   # библиотека отрисовки асинхронных лаяутов
   # pod 'Texture'
+  
+  # библиотека autolauout
+  pod 'SnapKit', '~> 5.0.0'
   
 end
