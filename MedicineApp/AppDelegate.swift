@@ -26,20 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSPlacesClient.provideAPIKey("AIzaSyDZARmmMu8nnyW5SP3XeeASajhd08QK4q4")
         
         initWithSplash()
-        //setupForTabBarController()
-//        // send that into our coordinator so that it can display view controllers
-//        coordinator = MainCoordinator(navigationController: navController)
-//        
-//        // tell the coordinator to take over control
-//        coordinator?.firstStart()
-//        
-//        // create a basic UIWindow and activate it
-//        window = UIWindow(frame: UIScreen.main.bounds)
-//        window?.rootViewController = navController
-//        window?.makeKeyAndVisible()
+    
         return true
     }
-    
     
     // MARK: Initial Coordinator Setup
     

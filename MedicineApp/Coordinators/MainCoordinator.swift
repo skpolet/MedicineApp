@@ -33,24 +33,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
         self.navigationController = navigationController
     }
     
-//    func callSearchCoordinator(){
-//        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
-//        fromCoordinator = searchCoordinator
-//        searchCoordinator.parentCoordinator = self
-//        childCoordinators.append(searchCoordinator)
-//        searchCoordinator.start()
-//
-//    }
-//
-//    func callMapCoordinator(){
-//        let mapCoordinator = MapCoordinator(navigationController: navigationController)
-//        fromCoordinator = mapCoordinator
-//        mapCoordinator.parentCoordinator = self
-//        childCoordinators.append(mapCoordinator)
-//        mapCoordinator.start()
-//
-//    }
-    
     func childDidFinish(_ child: Coordinator?){
         for (index, coordinator) in childCoordinators.enumerated(){
             if coordinator === child {
@@ -76,12 +58,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
             childDidFinish(childCoordinator)
         }
     }
-    
-    // MARK: UITabBarItem
-    
-//    func setTabBarItem(){
-//        splash.vc?.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-//    }
     
 }
 

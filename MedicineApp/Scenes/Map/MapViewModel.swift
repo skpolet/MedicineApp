@@ -37,6 +37,8 @@ class MapViewModel: NSObject, LocationCoordinatble {
         searchView.dataSource = self
         searchView.delegate = self
         
+
+        //clinicInfoVM.toggleExpand(.fullyCollapsed, fast: true)
 //        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
 //            searchView.toggleExpand(.closed, fast: true)
 //        }
@@ -45,7 +47,13 @@ class MapViewModel: NSObject, LocationCoordinatble {
         if let topVC = UIApplication.getTopViewController() {
             topVC.view = mapView
             configureButtonsInMap()
-            topVC.view.addSubview(searchView)
+            //topVC.view.addSubview(searchView)
+            let clinicInfoView = ClinicInfoView()
+            topVC.view.addSubview(clinicInfoView)
+            
+            clinicInfoView.tableView.backgroundColor = .clear
+            clinicInfoView.contentView.layer.cornerRadius = 10
+            clinicInfoView.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         }
         
     }

@@ -19,6 +19,7 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         let locationManager = LocationServices.instance
         locationManager.delegate = viewModel
+        
     }
     
     
