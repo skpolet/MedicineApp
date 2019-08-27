@@ -17,6 +17,7 @@ protocol MapViewModelDelegate: class {
     func configureSearchButton(button: UIButton)
     func configurePlusButton(button: UIButton)
     func configureMinusButton(button: UIButton)
+    func configureTargetButton(button: UIButton)
 }
 
 class MapViewModel: NSObject, LocationCoordinatble {
@@ -89,7 +90,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
         delegate?.configureSearchButton(button: configureSearchButton())
         delegate?.configurePlusButton(button: configurePlusButton())
         delegate?.configureMinusButton(button: configureMinusButton())
-        //configureCurrentTargetButton()
+        delegate?.configureTargetButton(button: configureCurrentTargetButton())
     }
     
     @objc func searchViewExpand(){
@@ -103,13 +104,19 @@ class MapViewModel: NSObject, LocationCoordinatble {
     }
     
     @objc func increaseMap(){
-        zoom = zoom + 1
+        let zoom = mapView.camera.zoom + 1
         mapView.animate(toZoom: zoom)
     }
     
     @objc func decreaseMap(){
-        zoom = zoom - 1
+        let zoom = mapView.camera.zoom - 1
         mapView.animate(toZoom: zoom)
+    }
+    
+    @objc func personTargetMap(){
+        let sharedLocation = SharedLocation.instance
+        let location = CLLocationCoordinate2D(latitude: sharedLocation.latitude, longitude: sharedLocation.longitude)
+        mapView.animate(toLocation: location)
     }
     
     func configureSearchButton() -> UIButton{
@@ -120,6 +127,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
         btnSearch.addTarget(self, action: #selector(searchViewExpand), for: .touchUpInside)
         btnSearch.backgroundColor = .white
         btnSearch.tintColor = .black
+        btnSearch.alpha = 0.8
         btnSearch.layer.cornerRadius = 25
         btnSearch.layer.shadowOffset = CGSize(width: 0, height: 2)
         btnSearch.layer.shadowOpacity = 0.2
@@ -128,19 +136,28 @@ class MapViewModel: NSObject, LocationCoordinatble {
         return btnSearch
     }
     
-    func configureCurrentTargetButton(){
-        let btn: UIButton = UIButton(type: UIButton.ButtonType.roundedRect)
-        btn.frame = CGRect(x: 100, y: 100, width: 100, height: 30)
-        btn.setTitle("me", for: UIControl.State.normal)
+    func configureCurrentTargetButton() ->UIButton{
+        btnTarget.frame = CGRect()
+        btnTarget.setImage(UIImage(named: "navigation"), for: UIControl.State.normal)
+        btnTarget.addTarget(self, action: #selector(personTargetMap), for: .touchUpInside)
+        btnTarget.backgroundColor = .white
+        btnTarget.tintColor = .black
+        btnTarget.alpha = 0.8
+        btnTarget.layer.cornerRadius = 25
+        btnTarget.layer.shadowOffset = CGSize(width: 0, height: 2)
+        btnTarget.layer.shadowOpacity = 0.2
+        btnTarget.layer.shadowRadius = 0.5
+        
+        return btnTarget
     }
     
     func configurePlusButton() ->UIButton{
-        //let btn: UIButton = UIButton(type: UIButton.ButtonType.roundedRect)
         btnPlus.frame = CGRect()
         btnPlus.setImage(UIImage(named: "add"), for: UIControl.State.normal)
         btnPlus.addTarget(self, action: #selector(increaseMap), for: .touchUpInside)
         btnPlus.backgroundColor = .white
         btnPlus.tintColor = .black
+        btnPlus.alpha = 0.8
         btnPlus.layer.cornerRadius = 25
         btnPlus.layer.shadowOffset = CGSize(width: 0, height: 2)
         btnPlus.layer.shadowOpacity = 0.2
@@ -150,12 +167,12 @@ class MapViewModel: NSObject, LocationCoordinatble {
     }
     
     func configureMinusButton() ->UIButton{
-        //let btn: UIButton = UIButton(type: UIButton.ButtonType.roundedRect)
         btnMinus.frame = CGRect()
         btnMinus.setImage(UIImage(named: "substract"), for: UIControl.State.normal)
         btnMinus.addTarget(self, action: #selector(decreaseMap), for: .touchUpInside)
         btnMinus.backgroundColor = .white
         btnMinus.tintColor = .black
+        btnMinus.alpha = 0.8
         btnMinus.layer.cornerRadius = 25
         btnMinus.layer.shadowOffset = CGSize(width: 0, height: 2)
         btnMinus.layer.shadowOpacity = 0.2
@@ -198,7 +215,10 @@ class MapViewModel: NSObject, LocationCoordinatble {
         if(Double(round(10000*position.target.latitude)/10000) == Double(round(10000*marker.position.latitude)/10000) && Double(round(10000*position.target.longitude)/10000) == Double(round(10000*marker.position.longitude)/10000)){
             
             self.mapView.selectedMarker = marker
-            marker.icon = UIImage(named: "Vector")
+            //marker.icon = UIImage(named: "Selected")
+            self.getCurrentClinic(marker: marker) { (clinics) in
+                marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+            }
         }
     }
     
@@ -212,8 +232,21 @@ class MapViewModel: NSObject, LocationCoordinatble {
         if markerInMap.count > 0{
             let marker = findMarker(marker: markerInMap[0])
             self.mapView.selectedMarker = marker
-            marker.icon = UIImage(named: "Vector")
+            //marker.icon = UIImage(named: "Selected")
+            self.getCurrentClinic(marker: marker) { (clinics) in
+                marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+            }
             
+        }
+    }
+    
+    func getCurrentClinic(marker: GMSMarker, completion: @escaping (_ result: Clinics)->()){
+        let clinicsFilter = self.allClinics?.filter { $0.latitude == marker.position.latitude && $0.longitude ==  marker.position.longitude}
+
+        if let clinics = clinicsFilter{
+            if(clinics.count > 0){
+                completion(clinics[0])
+            }
         }
     }
 }
@@ -251,7 +284,11 @@ extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
 
 extension MapViewModel: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
-        marker.icon = UIImage(named: "Vector")
+        
+        self.getCurrentClinic(marker: marker) { (clinics) in
+            marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+        }
+       // marker.icon = UIImage(named: "Selected")
         if(isSerchViewOpened == true){
             searchView?.toggleExpand(.closed, fast: true)
             clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
@@ -272,9 +309,9 @@ extension MapViewModel: GMSMapViewDelegate{
                 marker.position = CLLocationCoordinate2D(latitude: clinic.latitude!, longitude: clinic.longitude!)
                 marker.appearAnimation = GMSMarkerAnimation.pop
                 marker.title = clinic.address
-                marker.icon = UIImage(named: "Ellipse")
+                marker.icon =  clinic.highlight == 1 ? UIImage(named: "EliteNotSelected")  : UIImage(named: "NotSelected")
                 marker.snippet = clinic.title
-
+                
                 self.appendInRange(position: position, marker: marker, range: 1000)
             }
             self.allClinicsMap = clinics
@@ -284,7 +321,12 @@ extension MapViewModel: GMSMapViewDelegate{
     
     
     func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
-        marker.icon = UIImage(named: "Ellipse")
+        
+        self.getCurrentClinic(marker: marker) { (clinics) in
+            marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteNotSelected") : UIImage(named: "NotSelected")
+        }
+        
+        //marker.icon = UIImage(named: "NotSelected")
         clinicInfoViewModel.toggleExpand(state: .closed)
     }
 }

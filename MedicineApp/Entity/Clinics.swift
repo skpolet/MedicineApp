@@ -13,7 +13,7 @@ import ObjectMapper
 class Clinics: Mappable {
     var id: String?
     var title: String?
-    var highlight: String?
+    var highlight: Int?
     var address: String?
     var latitude: Double?
     var longitude: Double?

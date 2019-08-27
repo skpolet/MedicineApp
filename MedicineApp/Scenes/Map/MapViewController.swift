@@ -59,6 +59,7 @@ class MapViewController: UIViewController {
 
 }
 extension MapViewController: MapViewModelDelegate{
+    
     func configureMap(camera: GMSCameraPosition) {
         mapView?.animate(to: camera)
     }
@@ -95,6 +96,16 @@ extension MapViewController: MapViewModelDelegate{
         button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(50)
             make.top.equalTo(self.btnPlus!).offset(-65)
+            make.right.equalTo(self.view).offset(-20)
+        }
+    }
+    
+    func configureTargetButton(button: UIButton) {
+        self.mapView!.addSubview(button)
+        self.btnTarget = button
+        button.snp.makeConstraints { (make) -> Void in
+            make.width.height.equalTo(50)
+            make.top.equalTo(self.btnMinus!).offset(-65)
             make.right.equalTo(self.view).offset(-20)
         }
     }
