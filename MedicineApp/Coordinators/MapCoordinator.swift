@@ -18,6 +18,7 @@ class MapCoordinator: Coordinator{
     
     let mapVC = MapBuilder()
     
+    
     func start() {
         mapVC.vc?.coordinator = self
         navigationController.pushViewController(mapVC.vc!, animated: true)

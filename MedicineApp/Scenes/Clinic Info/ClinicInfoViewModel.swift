@@ -8,229 +8,167 @@
 
 import Foundation
 import UIKit
+import SnapKit
 
-public enum ClinicState{
-    case fullyExpanded
-    case middle
-    case fullyCollapsed
-    case closed
+class ClinicInfoViewModel: NSObject{
+    
+    var transition: ClinicInfoViewTransition?
+    
+    func toggleExpand(state: State) {
+        transition?.toggleExpandInfo(state)
+        transition?.toggleExpandImage(state)
+    }
+    
+    func configureClinicInfo(){
+        if let topVC = UIApplication.getTopViewController() {
+            let imageView = ClinicTransitionableView()
+            imageView.backgroundColor = .black
+            
+            let infoView = ClinicTransitionableView()
+            infoView.backgroundColor = .white
+            
+            transition = ClinicInfoViewTransition(imageView: imageView, infoView: infoView)
+            imageView.delegate = transition
+            infoView.delegate = transition
+            
+            topVC.view.addSubview(imageView)
+            topVC.view.addSubview(infoView)
+            
+            imageView.snp.makeConstraints { (make) -> Void in
+                make.width.height.equalTo(topVC.view)
+                //make.bottom.equalTo(self.view).offset(self.maximalYPositionImageView)
+                make.right.equalTo(topVC.view)
+                make.top.equalTo(topVC.view).offset(topVC.view.frame.height / 1.65)
+                //topConstraintImage = make.top.equalTo(topVC.view).offset(view.frame.height / 1.65).constraint
+                
+                
+            }
+            
+            infoView.snp.makeConstraints { (make) -> Void in
+                make.width.height.equalTo(topVC.view)
+                make.right.equalTo(topVC.view)
+                make.top.equalTo(topVC.view).offset(topVC.view.frame.height / 1.30)
+            }
+            let tableView = UITableView()
+            tableView.delegate = self
+            tableView.dataSource = self
+            tableView.bounces = false
+            tableView.register(UINib(nibName: "TitleClinicInfo", bundle: nil), forCellReuseIdentifier: "TitleClinicInfo")
+            tableView.register(UINib(nibName: "ShareClinicInfo", bundle: nil), forCellReuseIdentifier: "ShareClinicInfo")
+            tableView.register(UINib(nibName: "ActionsClinicInfo", bundle: nil), forCellReuseIdentifier: "ActionsClinicInfo")
+            tableView.register(UINib(nibName: "WorkTimeClinicInfo", bundle: nil), forCellReuseIdentifier: "WorkTimeClinicInfo")
+            tableView.register(UINib(nibName: "ContactsClinicInfo", bundle: nil), forCellReuseIdentifier: "ContactsClinicInfo")
+            tableView.register(UINib(nibName: "SocialWebClinicInfo", bundle: nil), forCellReuseIdentifier: "SocialWebClinicInfo")
+            tableView.register(UINib(nibName: "ServicesClinicInfo", bundle: nil), forCellReuseIdentifier: "ServicesClinicInfo")
+
+            
+            infoView.addSubview(tableView)
+            
+            tableView.snp.makeConstraints { (make) in
+                make.centerY.centerX.equalToSuperview()
+                make.width.height.equalToSuperview()
+            }
+            
+        }
+    }
+    
+    func configureClinicInfoAboveWindow(){
+        if let window :UIWindow = UIApplication.shared.keyWindow {
+            let imageView = ClinicTransitionableView()
+            imageView.backgroundColor = .red
+            
+            let infoView = ClinicTransitionableView()
+            infoView.backgroundColor = .black
+            infoView.alpha = 0.5
+            
+            transition = ClinicInfoViewTransition(imageView: imageView, infoView: infoView)
+            imageView.delegate = transition
+            infoView.delegate = transition
+            
+            window.addSubview(imageView)
+            window.addSubview(infoView)
+            
+            imageView.snp.makeConstraints { (make) -> Void in
+                make.width.height.equalTo(window)
+                //make.bottom.equalTo(self.view).offset(self.maximalYPositionImageView)
+                make.right.equalTo(window)
+                make.top.equalTo(window).offset(window.frame.height / 1.65)
+                //topConstraintImage = make.top.equalTo(topVC.view).offset(view.frame.height / 1.65).constraint
+                
+                
+            }
+            
+            infoView.snp.makeConstraints { (make) -> Void in
+                make.width.height.equalTo(window)
+                //make.bottom.equalTo(self.view).offset(self.maximalYPositionInfoView)
+                make.right.equalTo(window)
+                make.top.equalTo(window).offset(window.frame.height / 1.30)
+                //topConstraintInform = make.top.equalTo(view).offset(view.frame.height / 1.30).constraint
+                
+            }
+        }
+    }
 }
 
-class ClinicInfoViewModel: NSObject {
+extension ClinicInfoViewModel: UITableViewDelegate, UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
     
-    public var fastExpandingTime:Double = 0.25
-    public var slowExpandingTime:Double = 1
-    public var minimalYPosition:CGFloat = 0
-    private var maximalYPosition:CGFloat = 0
-    private let paddingFromTop:CGFloat = 8
-    public var currentExpandedState: ClinicState = .fullyCollapsed
-    private var startedDraggingOnImageClinic = false
-    
-    var clinic = ClinicInfoBuilder()
-    let currentVC = UIApplication.getTopViewController()
-    var visualEffectView:UIVisualEffectView!
-    
-    let cardHeight:CGFloat = 600
-    let cardHandleAreaHeight:CGFloat = 65
-    
-    var cardVisible = false
-//    var nextState: ClinicState {
-//        return cardVisible ? .collapsed : .expanded
-//    }
-    
-    var runningAnimations = [UIViewPropertyAnimator]()
-    var animationProgressWhenInterrupted:CGFloat = 0
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.row {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "TitleClinicInfo", for: indexPath) as! TitleClinicInfo
+            return cell
+        case 1:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ShareClinicInfo", for: indexPath) as! ShareClinicInfo
+            return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ActionsClinicInfo", for: indexPath) as! ActionsClinicInfo
+            return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "WorkTimeClinicInfo", for: indexPath) as! WorkTimeClinicInfo
+            return cell
+        case 4:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ContactsClinicInfo", for: indexPath) as! ContactsClinicInfo
+            return cell
+        case 5:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "SocialWebClinicInfo", for: indexPath) as! SocialWebClinicInfo
+            return cell
+        case 6:
+            let cell = tableView.dequeueReusableCell(withIdentifier: "ServicesClinicInfo", for: indexPath) as! ServicesClinicInfo
+            return cell
 
-    public func openClinic() {
-//        name : String, rating : String, adres: String, workTime: String, countVoites : String, countOfViews : String
-        setupCard()
-    }
-    
-    func setupCard() {
-        
-        let windowFrame = UIWindow().frame
-        let visibleHeight:CGFloat = 56 + paddingFromTop + 50
-        let frame = CGRect(
-            x: 0, y: windowFrame.height - visibleHeight,
-            width: windowFrame.width, height: windowFrame.height * CGFloat(0.8))
-        self.minimalYPosition = windowFrame.height - frame.height
-        self.maximalYPosition = frame.origin.y
-//        visualEffectView = UIVisualEffectView()
-//        visualEffectView.frame = self.view.frame
-//        self.view.addSubview(visualEffectView)
-        
-        //currentVC?.addChild(clinic.vc!)
-        currentVC?.view.addSubview(clinic.vc!.view)
-        clinic.vc!.view.frame = CGRect(x: 50, y: 55, width: 200, height: 200)
-        //clinic.vc!.view.frame = CGRect(x: 0, y: (currentVC?.view.frame.height)! - cardHandleAreaHeight, width: (currentVC?.view.bounds.width)!, height: cardHeight)
-        clinic.vc!.view.clipsToBounds = true
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(userDidTan))
-        //let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(ClinicInfoViewModel.userDidPan(recognizer:)))
-        let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(userDidPan))
-        dragGestureRecognizer.delegate = self
-        tapGestureRecognizer.delegate = self
-
-        clinic.vc!.view.addGestureRecognizer(tapGestureRecognizer)
-        clinic.vc!.view.addGestureRecognizer(dragGestureRecognizer)
-        
-        
-    }
-    
-    @objc private func userDidTan(_ sender: UITapGestureRecognizer){
-        print("any")
-    }
-    
-    @objc private func userDidPan(_ sender: UIPanGestureRecognizer){
-        let senderView = sender.view
-        let loc = sender.location(in: senderView)
-        let tappedView = senderView?.hitTest(loc, with: nil)
-        
-        print("rabotaet")
-        if sender.state == .began{
-            var viewToCheck:UIView? = tappedView
-            while viewToCheck != nil {
-                if viewToCheck is UIImageView{
-                    startedDraggingOnImageClinic = true
-                    break
-                }
-                viewToCheck = viewToCheck?.superview
-            }
+        default:
+            return UITableViewCell()
         }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if sender.state == .ended{
-            startedDraggingOnImageClinic = false
-            let currentYPosition = clinic.vc!.view.frame.origin.y
-            let toTopDistance = abs(Int32(currentYPosition - minimalYPosition))
-            let toBottomDistance = abs(Int32(currentYPosition  - maximalYPosition))
-            let toCenterDistance = abs(Int32(currentYPosition - (minimalYPosition + maximalYPosition) / 2))
-            let sortedDistances = [toTopDistance,toBottomDistance,toCenterDistance].sorted()
-            if sortedDistances[0] == toTopDistance{
-                toggleExpand(.fullyExpanded,fast:true)
-            }else if sortedDistances[0] == toBottomDistance{
-                toggleExpand(.fullyCollapsed,fast:true)
-            }else{
-                toggleExpand(.middle,fast:true)
-            }
-        }else{
-
-            let translation = sender.translation(in: clinic.vc!.view)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.row {
+        case 0:
+            return 100
+        case 1:
+            return 45
+        case 2:
+            return 75
+        case 3:
+            return 44
+        case 4:
+            return 70
+        case 5:
+            return 70
+        case 6:
+            return 44
             
-            var destinationY = clinic.vc!.view.frame.origin.y + translation.y
-            if destinationY < minimalYPosition {
-                destinationY = minimalYPosition
-            }else if destinationY > maximalYPosition {
-                destinationY = maximalYPosition
-            }
-            clinic.vc!.view.frame.origin.y = destinationY
-            
-            sender.setTranslation(CGPoint.zero, in: clinic.vc!.view)
+        default:
+            return 0
         }
     }
     
-    private func animationDuration(fast:Bool) -> Double {
-        if fast {
-            return fastExpandingTime
-        }else{
-            return slowExpandingTime
-        }
-    }
-    
-    public func toggleExpand(_ state: ClinicState, fast:Bool = false){
-        let duration = animationDuration(fast: fast)
-        UIView.animate(withDuration: duration) {
-            switch state{
-            case .fullyExpanded:
-                self.clinic.vc!.view.frame.origin.y = self.minimalYPosition
-            case .middle:
-                self.clinic.vc!.view.frame.origin.y = (self.minimalYPosition + self.maximalYPosition)/2
-            case .fullyCollapsed:
-                self.clinic.vc!.view.frame.origin.y = self.maximalYPosition
-            case .closed:
-                self.clinic.vc!.view.frame.origin.y = self.maximalYPosition + 100
-            }
-        }
-        self.currentExpandedState = state
-    }
-    
-//    @objc
-//    func handleCardPan (recognizer:UIPanGestureRecognizer) {
-//        switch recognizer.state {
-//        case .began:
-//            startInteractiveTransition(state: nextState, duration: 0.9)
-//        case .changed:
-//            let translation = recognizer.translation(in: clinic.vc!.view)
-//            var fractionComplete = translation.y / cardHeight
-//            fractionComplete = cardVisible ? fractionComplete : -fractionComplete
-//            updateInteractiveTransition(fractionCompleted: fractionComplete)
-//        case .ended:
-//            continueInteractiveTransition()
-//        default:
-//            break
-//        }
-//
-//    }
-    
-//    func animateTransitionIfNeeded (state: ClinicState, duration:TimeInterval) {
-//        if runningAnimations.isEmpty {
-//            let frameAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-//                switch state {
-//                case .expanded:
-//                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHeight
-//                case .collapsed:
-//                    self.cardViewController.view.frame.origin.y = self.view.frame.height - self.cardHandleAreaHeight
-//                }
-//            }
-//
-//            frameAnimator.addCompletion { _ in
-//                self.cardVisible = !self.cardVisible
-//                self.runningAnimations.removeAll()
-//            }
-//
-//            frameAnimator.startAnimation()
-//            runningAnimations.append(frameAnimator)
-//
-//
-////            let blurAnimator = UIViewPropertyAnimator(duration: duration, dampingRatio: 1) {
-////                switch state {
-////                case .expanded:
-////                    self.visualEffectView.effect = UIBlurEffect(style: .dark)
-////                case .collapsed:
-////                    self.visualEffectView.effect = nil
-////                }
-////            }
-////
-////            blurAnimator.startAnimation()
-////            runningAnimations.append(blurAnimator)
-//
-//        }
-//    }
-    
-//    func startInteractiveTransition(state:ClinicState, duration:TimeInterval) {
-//        if runningAnimations.isEmpty {
-//            animateTransitionIfNeeded(state: state, duration: duration)
-//        }
-//        for animator in runningAnimations {
-//            animator.pauseAnimation()
-//            animationProgressWhenInterrupted = animator.fractionComplete
-//        }
-//    }
-//
-//    func updateInteractiveTransition(fractionCompleted:CGFloat) {
-//        for animator in runningAnimations {
-//            animator.fractionComplete = fractionCompleted + animationProgressWhenInterrupted
-//        }
-//    }
-//
-//    func continueInteractiveTransition (){
-//        for animator in runningAnimations {
-//            animator.continueAnimation(withTimingParameters: nil, durationFactor: 0)
-//        }
-//    }
-    
-}
 
-extension ClinicInfoViewModel:  UIGestureRecognizerDelegate {
-    public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return true
-    }
 }

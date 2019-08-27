@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TitleClinicInfo" rowHeight="97" id="KGk-i7-Jjw" customClass="TitleClinicInfo" customModule="MedicineApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="97"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="96.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DOCTOR MARTIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2KS-zL-9Tt">
+                        <rect key="frame" x="15" y="10" width="137" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M7i-YM-BM2">
+                        <rect key="frame" x="15" y="39" width="155.5" height="29"/>
+                        <string key="text">г. Москва, Ленина д. 29, 
+метро “Красная площадь”</string>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vAf-pg-afs">
+                        <rect key="frame" x="260" y="10" width="45" height="41"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pp6-Ka-oS1">
+                                <rect key="frame" x="10" y="10" width="25" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.50196078431372548" blue="0.25882352941176467" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="pp6-Ka-oS1" firstAttribute="leading" secondItem="vAf-pg-afs" secondAttribute="leading" constant="10" id="39c-7d-qy5"/>
+                            <constraint firstItem="pp6-Ka-oS1" firstAttribute="top" secondItem="vAf-pg-afs" secondAttribute="top" constant="10" id="Cdf-se-mdV"/>
+                            <constraint firstAttribute="bottom" secondItem="pp6-Ka-oS1" secondAttribute="bottom" constant="10" id="LsV-0Z-kMH"/>
+                            <constraint firstAttribute="trailing" secondItem="pp6-Ka-oS1" secondAttribute="trailing" constant="10" id="TcH-qF-Pys"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10 отзывов" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K74-8q-foY">
+                        <rect key="frame" x="250" y="56" width="55" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.84588289260864258" green="0.50178855657577515" blue="0.25691330432891846" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="K74-8q-foY" secondAttribute="trailing" constant="15" id="3x3-KX-YKG"/>
+                    <constraint firstItem="M7i-YM-BM2" firstAttribute="top" secondItem="2KS-zL-9Tt" secondAttribute="bottom" constant="8" id="NcV-f5-w8N"/>
+                    <constraint firstItem="M7i-YM-BM2" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="QxM-L7-74i"/>
+                    <constraint firstItem="vAf-pg-afs" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="TGW-fC-g65"/>
+                    <constraint firstItem="K74-8q-foY" firstAttribute="top" secondItem="vAf-pg-afs" secondAttribute="bottom" constant="5" id="Wvi-g8-3MH"/>
+                    <constraint firstAttribute="trailing" secondItem="vAf-pg-afs" secondAttribute="trailing" constant="15" id="h2T-wY-4zB"/>
+                    <constraint firstItem="2KS-zL-9Tt" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="oIE-5x-sDT"/>
+                    <constraint firstItem="2KS-zL-9Tt" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="vl6-Oa-3TV"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <point key="canvasLocation" x="137.68115942028987" y="103.45982142857143"/>
+        </tableViewCell>
+    </objects>
+</document>

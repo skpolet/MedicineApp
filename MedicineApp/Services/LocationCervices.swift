@@ -22,6 +22,7 @@ extension LocationCoordinatble {
 
 class LocationServices : NSObject, CLLocationManagerDelegate {
     
+    let location = SharedLocation.instance
     weak var delegate: LocationCoordinatble?
     let locationManager = CLLocationManager()
     
@@ -41,7 +42,9 @@ class LocationServices : NSObject, CLLocationManagerDelegate {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")
         retreiveCityName(lattitude: locValue.latitude, longitude: locValue.longitude)
-        delegate?.currentLocation(longitude: locValue.longitude, latitude: locValue.latitude)
+        //delegate?.currentLocation(longitude: locValue.longitude, latitude: locValue.latitude)
+        location.longitude = locValue.longitude
+        location.latitude = locValue.latitude
     }
     
     func retreiveCityName(lattitude: Double, longitude: Double)
@@ -50,7 +53,12 @@ class LocationServices : NSObject, CLLocationManagerDelegate {
         geocoder.reverseGeocodeLocation(CLLocation(latitude: lattitude, longitude: longitude), completionHandler:
             {
                 placeMarks, error in
-                self.delegate?.currentLocation(city: placeMarks?.first?.locality, region: placeMarks?.first?.administrativeArea)
+                //self.delegate?.currentLocation(city: placeMarks?.first?.locality, region: placeMarks?.first?.administrativeArea)
+                if let city = placeMarks?.first?.locality, let region = placeMarks?.first?.administrativeArea{
+                    self.location.city = city
+                    self.location.region = region
+                }
+
                 self.locationManager.stopUpdatingLocation()
         })
     }

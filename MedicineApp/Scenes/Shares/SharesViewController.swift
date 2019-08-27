@@ -16,6 +16,8 @@ class SharesViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        let civm = ClinicInfoViewModel()
+        civm.configureClinicInfo()
     }
     
 

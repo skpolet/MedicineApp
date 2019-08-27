@@ -22,9 +22,13 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
     
     func start() {
         splash.vc?.coordinator = self
-    
+        let mapViewModel = MapViewModel()
+        let locationServices = LocationServices.instance
+        locationServices.delegate = mapViewModel
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.navigationController.pushViewController(self.tabbar, animated: false)
+            self.navigationController.isNavigationBarHidden = true
             self.tabbar.navigationItem.hidesBackButton = true
         }
     }
