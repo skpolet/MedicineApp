@@ -17,9 +17,14 @@ enum State{
     case closed
 }
 
+//protocol ClinicInfoViewTransitionDelegate {
+//    func didClosed()
+//}
+
 class ClinicInfoViewTransition {
     
-    var delegate: HandleDelegate?
+    //var delegate: HandleDelegate?
+    //weak var delegate: ClinicInfoViewTransitionDelegate?
     
     var currentExpandedState: State = .closed
     
@@ -28,6 +33,8 @@ class ClinicInfoViewTransition {
     
     var minimalYPositionInfoView: CGFloat!
     var maximalYPositionInfoView: CGFloat!
+    
+    var closedYPositionInfoView: CGFloat!
     
     var stopOnTop :Bool = false
     
@@ -53,6 +60,8 @@ class ClinicInfoViewTransition {
         
         minimalYPositionImageView = 0
         maximalYPositionImageView = UIWindow().frame.height / 1.65
+        
+        closedYPositionInfoView = UIWindow().frame.height
     }
 }
 
@@ -64,13 +73,15 @@ extension ClinicInfoViewTransition: HandleDelegate {
             let toTopDistanceInfo = infoView.toTopDistance(minimalYPosition: minimalYPositionInfoView)
             let toBottomDistanceInfo = infoView.toBottomDistance(maximalYPosition: maximalYPositionInfoView)
             let toCenterDistanceInfo = infoView.toCenterDistance(maximalYPosition: maximalYPositionInfoView, minimalYPosition: minimalYPositionInfoView)
-            let sortedDistancesInfo = [toTopDistanceInfo,toBottomDistanceInfo,toCenterDistanceInfo].sorted()
+            let toCloseDistanceInfo = infoView.toCloseDistance(closedYPosition: closedYPositionInfoView,maximalYPosition: maximalYPositionInfoView)
+            let sortedDistancesInfo = [toTopDistanceInfo,toBottomDistanceInfo,toCenterDistanceInfo,toCloseDistanceInfo].sorted()
             
             //algorithm for image
             let toTopDistanceImage = imageView.toTopDistance(minimalYPosition: minimalYPositionImageView)
             let toBottomDistanceImage = imageView.toBottomDistance(maximalYPosition: maximalYPositionImageView)
             let toCenterDistanceImage = imageView.toCenterDistance(maximalYPosition: maximalYPositionImageView, minimalYPosition: minimalYPositionImageView)
-            let sortedDistancesImage = [toTopDistanceImage,toBottomDistanceImage,toCenterDistanceImage].sorted()
+            let toCloseDistanceImage = infoView.toCloseDistance(closedYPosition: closedYPositionInfoView, maximalYPosition: maximalYPositionInfoView)
+            let sortedDistancesImage = [toTopDistanceImage,toBottomDistanceImage,toCenterDistanceImage,toCloseDistanceImage].sorted()
             
             
             
@@ -78,6 +89,8 @@ extension ClinicInfoViewTransition: HandleDelegate {
                 toggleExpandInfo(.fullyExpanded)
             }else if sortedDistancesInfo[0] == toBottomDistanceInfo{
                 toggleExpandInfo(.fullyCollapsed)
+            }else if sortedDistancesInfo[0] == toCloseDistanceInfo{
+                toggleExpandInfo(.closed)
             }else{
                 toggleExpandInfo(.middle)
             }
@@ -86,6 +99,8 @@ extension ClinicInfoViewTransition: HandleDelegate {
                 toggleExpandImage(.fullyExpanded)
             }else if sortedDistancesImage[0] == toBottomDistanceImage{
                 toggleExpandImage(.fullyCollapsed)
+            }else if sortedDistancesInfo[0] == toCloseDistanceImage{
+                toggleExpandImage(.closed)
             }else{
                 toggleExpandImage(.middle)
             }
@@ -106,10 +121,11 @@ extension ClinicInfoViewTransition: HandleDelegate {
                 
                 destinationYInfoView = minimalYPositionInfoView
                 // destinationYImageView = minimalYPositionImageView
-            }else if destinationYInfoView > maximalYPositionInfoView{
-                destinationYInfoView = maximalYPositionInfoView
-                //destinationYImageView = maximalYPositionImageView
             }
+//            else if destinationYInfoView > maximalYPositionInfoView{
+//                destinationYInfoView = maximalYPositionInfoView
+//                //destinationYImageView = maximalYPositionImageView
+//            }
             
             if (imageView.toTopDistance(minimalYPosition: minimalYPositionImageView) == 0){
                 self.stopOnTop = true
@@ -121,9 +137,10 @@ extension ClinicInfoViewTransition: HandleDelegate {
                 destinationYImageView = minimalYPositionImageView
             }else if destinationYImageView < minimalYPositionImageView {
                 destinationYImageView = minimalYPositionImageView
-            }else if destinationYImageView > maximalYPositionImageView{
-                destinationYImageView = maximalYPositionImageView
             }
+//            else if destinationYImageView > maximalYPositionImageView{
+//                destinationYImageView = maximalYPositionImageView
+//            }
             
             infoView.frame.origin.y = destinationYInfoView
             imageView.frame.origin.y = destinationYImageView
@@ -167,7 +184,8 @@ extension ClinicInfoViewTransition: HandleDelegate {
             case .fullyCollapsed:
                 self.imageView.frame.origin.y = self.maximalYPositionImageView
             case .closed:
-                self.imageView.frame.origin.y = self.minimalYPositionImageView + 1000
+                self.imageView.frame.origin.y = self.maximalYPositionImageView + 1000
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "closeClinicInfo"), object: nil, userInfo: nil) 
             }
         }
         self.currentExpandedState = state
@@ -179,6 +197,10 @@ extension UIView{
     
     var currentYPosition: CGFloat{
         return self.frame.origin.y
+    }
+    
+    func toCloseDistance(closedYPosition: CGFloat, maximalYPosition: CGFloat) ->Int32{
+        return abs(Int32(currentYPosition - (closedYPosition + maximalYPosition) / 2))
     }
     
     func toTopDistance(minimalYPosition: CGFloat) ->Int32{

@@ -38,6 +38,9 @@ class MapViewController: UIViewController {
         
         let searchView = JKBottomSearchView()
         viewModel.configureSearchView(searchView: searchView)
+        
+        
+
         //searchView.dataSource = viewModel
         //searchView.delegate = viewModel
         
@@ -60,9 +63,9 @@ class MapViewController: UIViewController {
 }
 extension MapViewController: MapViewModelDelegate{
     
-    func configureMap(camera: GMSCameraPosition) {
-        mapView?.animate(to: camera)
-    }
+//    func configureMap(camera: GMSCameraPosition) {
+//        mapView?.animate(to: camera)
+//    }
     
     func configureSearchView(searchView: JKBottomSearchView) {
 

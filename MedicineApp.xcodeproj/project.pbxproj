@@ -27,6 +27,9 @@
 		E11930E122F9FA05006CE7D4 /* ClinicInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11930E022F9FA05006CE7D4 /* ClinicInfoViewController.swift */; };
 		E11930E322FA0096006CE7D4 /* ClinicInfoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E11930E222FA0096006CE7D4 /* ClinicInfoCoordinator.swift */; };
 		E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1201FC422B7AB340092C1C2 /* LocationCervices.swift */; };
+		E12B224623184C8400CCB7F7 /* Comments.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B224523184C8400CCB7F7 /* Comments.swift */; };
+		E12B224823184F0B00CCB7F7 /* CommentsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B224723184F0B00CCB7F7 /* CommentsLoader.swift */; };
+		E12B224A23186EDA00CCB7F7 /* SharesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E12B224923186EDA00CCB7F7 /* SharesLoader.swift */; };
 		E144159C23040B3100BAA02A /* ClinicInfoViewTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E144159B23040B3100BAA02A /* ClinicInfoViewTransition.swift */; };
 		E14415AE2306AC2600BAA02A /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E14415AD2306AC2600BAA02A /* LocationManager.swift */; };
 		E15ADDC222E1F9DB005AA60A /* MedServicesBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E15ADDC122E1F9DB005AA60A /* MedServicesBuilder.swift */; };
@@ -54,9 +57,11 @@
 		E1925435230DDE540049EA1C /* AllClinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1925433230DDE540049EA1C /* AllClinics.swift */; };
 		E1925436230DDE540049EA1C /* AllClinics.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1925434230DDE540049EA1C /* AllClinics.xib */; };
 		E1ADD0EB22CF89E500A426C0 /* Shares.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EA22CF89E500A426C0 /* Shares.swift */; };
-		E1ADD0ED22CF8A0700A426C0 /* Clinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */; };
-		E1ADD0EF22CF8BA900A426C0 /* SharesAndClinicsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */; };
-		E1ADD0F322CF8EEA00A426C0 /* SharesAndClinics.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */; };
+		E1ADD0ED22CF8A0700A426C0 /* Clinic.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1ADD0EC22CF8A0700A426C0 /* Clinic.swift */; };
+		E1AFB9D9231D548500132D37 /* CurrentShare.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFB9D8231D548500132D37 /* CurrentShare.swift */; };
+		E1AFB9DB231D549300132D37 /* AllShares.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1AFB9DA231D549300132D37 /* AllShares.swift */; };
+		E1B160D3231D233000DE403D /* CurrentShare.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B160D1231D233000DE403D /* CurrentShare.xib */; };
+		E1B160D7231D2A6200DE403D /* AllShares.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1B160D5231D2A6200DE403D /* AllShares.xib */; };
 		E1C8C5312306BB240012FF0E /* JKBottomSearchView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E1C8C5302306BB240012FF0E /* JKBottomSearchView.framework */; };
 		E1C8C5332306D1600012FF0E /* ClinicsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1C8C5322306D1600012FF0E /* ClinicsLoader.swift */; };
 		E1CA76EC22FB4E0700AD7BE8 /* ClinicTransitionableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CA76EB22FB4E0700AD7BE8 /* ClinicTransitionableView.swift */; };
@@ -117,6 +122,9 @@
 		E11930E022F9FA05006CE7D4 /* ClinicInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicInfoViewController.swift; sourceTree = "<group>"; };
 		E11930E222FA0096006CE7D4 /* ClinicInfoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicInfoCoordinator.swift; sourceTree = "<group>"; };
 		E1201FC422B7AB340092C1C2 /* LocationCervices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCervices.swift; sourceTree = "<group>"; };
+		E12B224523184C8400CCB7F7 /* Comments.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comments.swift; sourceTree = "<group>"; };
+		E12B224723184F0B00CCB7F7 /* CommentsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsLoader.swift; sourceTree = "<group>"; };
+		E12B224923186EDA00CCB7F7 /* SharesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesLoader.swift; sourceTree = "<group>"; };
 		E144159B23040B3100BAA02A /* ClinicInfoViewTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicInfoViewTransition.swift; sourceTree = "<group>"; };
 		E14415AD2306AC2600BAA02A /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		E15ADDC122E1F9DB005AA60A /* MedServicesBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedServicesBuilder.swift; sourceTree = "<group>"; };
@@ -146,9 +154,11 @@
 		E1925433230DDE540049EA1C /* AllClinics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllClinics.swift; sourceTree = "<group>"; };
 		E1925434230DDE540049EA1C /* AllClinics.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllClinics.xib; sourceTree = "<group>"; };
 		E1ADD0EA22CF89E500A426C0 /* Shares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shares.swift; sourceTree = "<group>"; };
-		E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinics.swift; sourceTree = "<group>"; };
-		E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesAndClinicsLoader.swift; sourceTree = "<group>"; };
-		E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharesAndClinics.swift; sourceTree = "<group>"; };
+		E1ADD0EC22CF8A0700A426C0 /* Clinic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Clinic.swift; sourceTree = "<group>"; };
+		E1AFB9D8231D548500132D37 /* CurrentShare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentShare.swift; sourceTree = "<group>"; };
+		E1AFB9DA231D549300132D37 /* AllShares.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllShares.swift; sourceTree = "<group>"; };
+		E1B160D1231D233000DE403D /* CurrentShare.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrentShare.xib; sourceTree = "<group>"; };
+		E1B160D5231D2A6200DE403D /* AllShares.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AllShares.xib; sourceTree = "<group>"; };
 		E1C8C5302306BB240012FF0E /* JKBottomSearchView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = JKBottomSearchView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1C8C5322306D1600012FF0E /* ClinicsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicsLoader.swift; sourceTree = "<group>"; };
 		E1CA76EB22FB4E0700AD7BE8 /* ClinicTransitionableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClinicTransitionableView.swift; sourceTree = "<group>"; };
@@ -286,6 +296,17 @@
 			path = "Clinic Info";
 			sourceTree = "<group>";
 		};
+		E12B224D231D22D000CCB7F7 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				E1AFB9D8231D548500132D37 /* CurrentShare.swift */,
+				E1B160D1231D233000DE403D /* CurrentShare.xib */,
+				E1AFB9DA231D549300132D37 /* AllShares.swift */,
+				E1B160D5231D2A6200DE403D /* AllShares.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
 		E15ADDC022E1F9BE005AA60A /* MedServices */ = {
 			isa = PBXGroup;
 			children = (
@@ -357,8 +378,9 @@
 				E1201FC422B7AB340092C1C2 /* LocationCervices.swift */,
 				E14415AD2306AC2600BAA02A /* LocationManager.swift */,
 				E17A9F6822B91D0600044A8A /* LocationLoader.swift */,
-				E1ADD0EE22CF8BA900A426C0 /* SharesAndClinicsLoader.swift */,
 				E1C8C5322306D1600012FF0E /* ClinicsLoader.swift */,
+				E12B224723184F0B00CCB7F7 /* CommentsLoader.swift */,
+				E12B224923186EDA00CCB7F7 /* SharesLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -369,8 +391,8 @@
 				E17A9F6C22B9351000044A8A /* Location.swift */,
 				E17A9F6E22B9601B00044A8A /* LocationList.swift */,
 				E1ADD0EA22CF89E500A426C0 /* Shares.swift */,
-				E1ADD0EC22CF8A0700A426C0 /* Clinics.swift */,
-				E1ADD0F222CF8EEA00A426C0 /* SharesAndClinics.swift */,
+				E1ADD0EC22CF8A0700A426C0 /* Clinic.swift */,
+				E12B224523184C8400CCB7F7 /* Comments.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -457,6 +479,7 @@
 		E1EFC1C922E09F5F00F76FC6 /* Shares */ = {
 			isa = PBXGroup;
 			children = (
+				E12B224D231D22D000CCB7F7 /* Cells */,
 				E1EFC1CA22E0A04C00F76FC6 /* SharesBuilder.swift */,
 				E1EFC1CC22E0A05E00F76FC6 /* Shares.storyboard */,
 				E1EFC1CE22E0A07A00F76FC6 /* SharesViewController.swift */,
@@ -555,6 +578,7 @@
 				E1EFC1D422E0A0BD00F76FC6 /* Ratings.storyboard in Resources */,
 				E1903E1522AA778800DEB9E0 /* LaunchScreen.storyboard in Resources */,
 				E15ADDC522E1FA14005AA60A /* MedServices.storyboard in Resources */,
+				E1B160D7231D2A6200DE403D /* AllShares.xib in Resources */,
 				E1E43DF2230D855900F206BF /* CommentClinicInfo.xib in Resources */,
 				E1E43DF6230D9AD400F206BF /* ContactsClinicInfo.xib in Resources */,
 				E1E43DE6230D848500F206BF /* SocialWebClinicInfo.xib in Resources */,
@@ -563,6 +587,7 @@
 				E105ACF722DCAF6200368B23 /* Splash.storyboard in Resources */,
 				E105AD0222DCB1DA00368B23 /* Search.storyboard in Resources */,
 				E1E43DEE230D854000F206BF /* RateClinicInfo.xib in Resources */,
+				E1B160D3231D233000DE403D /* CurrentShare.xib in Resources */,
 				E11930DF22F9F9E7006CE7D4 /* ClinicInfo.storyboard in Resources */,
 				E1E43DD6230D83E700F206BF /* TitleClinicInfo.xib in Resources */,
 				E1925436230DDE540049EA1C /* AllClinics.xib in Resources */,
@@ -637,18 +662,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E1AFB9DB231D549300132D37 /* AllShares.swift in Sources */,
 				E105ACF522DCAF3700368B23 /* SplashBuilder.swift in Sources */,
 				E1EFC1CF22E0A07A00F76FC6 /* SharesViewController.swift in Sources */,
 				E1EFC1E322E0A63E00F76FC6 /* CommentsCoordinator.swift in Sources */,
+				E1AFB9D9231D548500132D37 /* CurrentShare.swift in Sources */,
 				E1903E0B22AA778100DEB9E0 /* AppDelegate.swift in Sources */,
 				E1E43DDD230D843800F206BF /* ActionsClinicInfo.swift in Sources */,
 				E1CA76EC22FB4E0700AD7BE8 /* ClinicTransitionableView.swift in Sources */,
 				E1201FC522B7AB340092C1C2 /* LocationCervices.swift in Sources */,
-				E1ADD0ED22CF8A0700A426C0 /* Clinics.swift in Sources */,
+				E1ADD0ED22CF8A0700A426C0 /* Clinic.swift in Sources */,
 				E144159C23040B3100BAA02A /* ClinicInfoViewTransition.swift in Sources */,
 				E1ADD0EB22CF89E500A426C0 /* Shares.swift in Sources */,
 				E105AD0022DCB1CD00368B23 /* SearchBuilder.swift in Sources */,
 				E11930E322FA0096006CE7D4 /* ClinicInfoCoordinator.swift in Sources */,
+				E12B224823184F0B00CCB7F7 /* CommentsLoader.swift in Sources */,
 				E169502622DA2C4B009CFB46 /* MapViewController.swift in Sources */,
 				E1E43DE9230D850A00F206BF /* ServicesClinicInfo.swift in Sources */,
 				E15ADDD522E1FB9C005AA60A /* MedServicesCoordinator.swift in Sources */,
@@ -662,7 +690,6 @@
 				E105ACEE22DCAD5B00368B23 /* MainCoordinator.swift in Sources */,
 				E1E43DED230D854000F206BF /* RateClinicInfo.swift in Sources */,
 				E1E1853122DCA69D008F5279 /* StoryboardNames.swift in Sources */,
-				E1ADD0F322CF8EEA00A426C0 /* SharesAndClinics.swift in Sources */,
 				E17A9F7222B96B5800044A8A /* SearchBar.swift in Sources */,
 				E17A9F6D22B9351000044A8A /* Location.swift in Sources */,
 				E105ACF922DCAF7700368B23 /* SplashViewController.swift in Sources */,
@@ -675,6 +702,7 @@
 				E11930DD22F9F9DB006CE7D4 /* ClinicInfoViewModel.swift in Sources */,
 				E17A9F6F22B9601B00044A8A /* LocationList.swift in Sources */,
 				E11930DB22F9F9C7006CE7D4 /* ClinicInfoBuilder.swift in Sources */,
+				E12B224623184C8400CCB7F7 /* Comments.swift in Sources */,
 				E15ADDD122E1FADE005AA60A /* SearchViewModel.swift in Sources */,
 				E105ACE622DCAC3100368B23 /* Coordinator.swift in Sources */,
 				E1E43DD5230D83E700F206BF /* TitleClinicInfo.swift in Sources */,
@@ -693,11 +721,11 @@
 				E1E43DF1230D855900F206BF /* CommentClinicInfo.swift in Sources */,
 				E15ADDCF22E1FACA005AA60A /* SharesViewModel.swift in Sources */,
 				E1EFC1D222E0A0B300F76FC6 /* RatingsBuilder.swift in Sources */,
-				E1ADD0EF22CF8BA900A426C0 /* SharesAndClinicsLoader.swift in Sources */,
 				E1EFC1D622E0A0D600F76FC6 /* RatingsViewController.swift in Sources */,
 				E15ADDC922E1FA9F005AA60A /* MedServicesViewModel.swift in Sources */,
 				E15ADDD322E1FAED005AA60A /* SpalshViewModel.swift in Sources */,
 				E1C8C5332306D1600012FF0E /* ClinicsLoader.swift in Sources */,
+				E12B224A23186EDA00CCB7F7 /* SharesLoader.swift in Sources */,
 				E15ADDD722E20029005AA60A /* MainTabBarTransition.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

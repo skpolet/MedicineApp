@@ -78,6 +78,7 @@
                 <outlet property="adresClinic" destination="NRH-0R-sn4" id="1uE-pu-NaC"/>
                 <outlet property="distanceClinic" destination="fDk-YS-0nA" id="N0a-dA-nAg"/>
                 <outlet property="ratingClinic" destination="XO9-Fs-38g" id="S8f-S2-yvb"/>
+                <outlet property="ratingView" destination="lLl-KP-E7W" id="n2i-fZ-b9n"/>
                 <outlet property="titleClinic" destination="X17-hd-h2d" id="1xy-Ed-PAo"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="112.16517857142857"/>

@@ -14,6 +14,11 @@ class ClinicInfoViewModel: NSObject{
     
     var transition: ClinicInfoViewTransition?
     
+    var clinic : Clinic?
+    let tableView = UITableView()
+    var comments : [Comment]?
+    var shares : [Share]?
+    
     func toggleExpand(state: State) {
         transition?.toggleExpandInfo(state)
         transition?.toggleExpandImage(state)
@@ -49,7 +54,7 @@ class ClinicInfoViewModel: NSObject{
                 make.right.equalTo(topVC.view)
                 make.top.equalTo(topVC.view).offset(topVC.view.frame.height / 1.30)
             }
-            let tableView = UITableView()
+            
             tableView.delegate = self
             tableView.dataSource = self
             tableView.bounces = false
@@ -65,7 +70,11 @@ class ClinicInfoViewModel: NSObject{
             infoView.addSubview(tableView)
             
             tableView.snp.makeConstraints { (make) in
-                make.centerY.centerX.equalToSuperview()
+                //make.centerY.centerX.equalToSuperview()
+                make.right.equalTo(infoView).offset(0)
+                make.bottom.equalTo(infoView).offset(0)
+                make.left.equalTo(infoView).offset(0)
+                make.top.equalTo(infoView).offset(18)
                 make.width.height.equalToSuperview()
             }
             
@@ -110,15 +119,45 @@ class ClinicInfoViewModel: NSObject{
     }
 }
 
+extension ClinicInfoViewModel: SelectedClinicIdDelegate{
+    func clinicId(id: Int) {
+        let loader = ClinicsLoader()
+        loader.getClinicWithId(id: id) { (clinic) in
+            self.clinic = clinic
+            print("clinic:\(String(describing: clinic.address))")
+            self.tableView.reloadData()
+        }
+        let commentLoader = CommentLoader()
+        commentLoader.getComments(idClinic: id) { (comments) in
+            self.comments = comments
+        }
+        let sharesLoader = SharesLoader()
+        sharesLoader.getShareWithId(idClinic: id) { (shares) in
+            self.shares = shares
+        }
+    }
+    
+}
+
 extension ClinicInfoViewModel: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        let rowCounter = 6 + (shares?.count ?? 0)
+        
+        return rowCounter
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         switch indexPath.row {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: "TitleClinicInfo", for: indexPath) as! TitleClinicInfo
+            cell.titleClinic.text = clinic?.title
+            cell.adressClinic.text = clinic?.address
+            cell.ratingClinic.text = "\(clinic?.rating ?? 0)"
+            
+            let underlineAttribute = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
+            let underlineAttributedString = NSAttributedString(string: "\(comments?.count ?? 0) отзывов", attributes: underlineAttribute)
+            
+            cell.countComments.attributedText = underlineAttributedString
             return cell
         case 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "ShareClinicInfo", for: indexPath) as! ShareClinicInfo

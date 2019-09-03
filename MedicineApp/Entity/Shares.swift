@@ -10,9 +10,10 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Shares: Mappable {
-    var id: String?
-    var clinicId: String?
+class Share: Mappable {
+    var id: Int?
+    var idClinic : Int?
+    var nameClinic : String?
     var title: String?
     var description: String?
     var highlight: String?
@@ -22,8 +23,9 @@ class Shares: Mappable {
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        clinicId <- map["clinicId"]
+        id <- map["idShare"]
+        idClinic  <- map["idClinic"]
+        nameClinic <- map["nameClinic"]
         title <- map["title"]
         description <- map["description"]
         highlight <- map["highlight"]

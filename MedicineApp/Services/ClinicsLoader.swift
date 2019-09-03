@@ -24,7 +24,7 @@ class ClinicsLoader: NSObject {
 //        }
 //    }
     
-    func getClinics(radius: Double, longitude: Double , latitude: Double, completion: @escaping (_ result: [Clinics])->()){
+    func getClinics(radius: Double, longitude: Double , latitude: Double, completion: @escaping (_ result: [Clinic])->()){
         
         
         let radiuz = radius != 0 ? "&radius=\(radius)" : ""
@@ -33,10 +33,23 @@ class ClinicsLoader: NSObject {
         Alamofire.request("https://mp3cloud.ru/dentallapp/clinics.php?latitude=\(latitude)&longitude=\(longitude)\(radiuz)",
                           method: .get).responseJSON {
                             response in
-                            if let clinics = Mapper<Clinics>().mapArray(JSONObject:response.result.value){
+                            if let clinics = Mapper<Clinic>().mapArray(JSONObject:response.result.value){
                                 completion(clinics)
                                 
                             }
+        }
+    }
+    
+    func getClinicWithId(id: Int, completion: @escaping (_ result: Clinic)->()){
+        
+        print("request : https://mp3cloud.ru/dentallapp/clinics.php?idClinic=\(id) ")
+        Alamofire.request("https://mp3cloud.ru/dentallapp/clinics.php?idClinic=\(id)",
+            method: .get).responseJSON {
+                response in
+                if let clinic = Mapper<Clinic>().map(JSONObject:response.result.value){
+                    completion(clinic)
+                    
+                }
         }
     }
 

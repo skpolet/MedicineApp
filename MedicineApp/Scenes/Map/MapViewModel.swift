@@ -12,7 +12,7 @@ import JKBottomSearchView
 import SnapKit
 
 protocol MapViewModelDelegate: class {
-    func configureMap(camera: GMSCameraPosition)
+    //func configureMap(camera: GMSCameraPosition)
     func configureSearchView(searchView: JKBottomSearchView)
     func configureSearchButton(button: UIButton)
     func configurePlusButton(button: UIButton)
@@ -20,9 +20,14 @@ protocol MapViewModelDelegate: class {
     func configureTargetButton(button: UIButton)
 }
 
+protocol SelectedClinicIdDelegate: class {
+    func clinicId(id: Int)
+}
+
 class MapViewModel: NSObject, LocationCoordinatble {
     
     weak var delegate : MapViewModelDelegate?
+    weak var delegateClinicID : SelectedClinicIdDelegate?
     
     lazy var btnSearch = UIButton(type: UIButton.ButtonType.roundedRect)
     lazy var btnPlus = UIButton(type: UIButton.ButtonType.roundedRect)
@@ -32,13 +37,17 @@ class MapViewModel: NSObject, LocationCoordinatble {
     weak var searchView : JKBottomSearchView?
     let clinicInfoViewModel = ClinicInfoViewModel()
     let clinicsLoader = ClinicsLoader()
-    var allClinics: [Clinics]?
-    var allClinicsMap: [Clinics]?
+    var allClinics: [Clinic]?
+    var allClinicsMap: [Clinic]?
+    var allClinicsSearchArray: [Clinic]?
     var allMarkers: [GMSMarker]  = []
+    var savedLastMarker : GMSMarker?
+    var clinic : Clinic?
     
     var coordinats : (long: Double?, lat: Double?)
     var zoom: Float = 15
     var isSerchViewOpened: Bool = true
+    var isInfoClinicViewOpened: Bool = true
     
 //    func currentLocation(longitude: Double?, latitude: Double?) {
 //        //if(coordinats.lat == nil && coordinats.long == nil){
@@ -46,17 +55,39 @@ class MapViewModel: NSObject, LocationCoordinatble {
 //        coordinats.lat = latitude
 //
 //    }
+    
+    @objc func closeClinicInfo(_ notification: NSNotification) {
+        
+        if(isInfoClinicViewOpened == true){
+            
+            guard let lastMarker = savedLastMarker else {
+                return
+            }
+        self.getCurrentClinic(marker: lastMarker) { (clinics) in
+            lastMarker.icon = clinics.highlight == 1 ? UIImage(named: "EliteNotSelected") : UIImage(named: "NotSelected")
+            self.isInfoClinicViewOpened = false
+            self.mapView.selectedMarker = nil
+        }
+        }
+        
+    }
 
     func configuringMap(mapView: GMSMapView){
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.closeClinicInfo(_:)), name: NSNotification.Name(rawValue: "closeClinicInfo"), object: nil)
 
         self.mapView = mapView
         self.mapView.delegate = self
         
         clinicInfoViewModel.configureClinicInfo()
         
+        for gesture in self.mapView.gestureRecognizers! {
+            mapView.removeGestureRecognizer(gesture)
+        }
 
         
         
+        self.delegateClinicID = clinicInfoViewModel
         let location = SharedLocation.instance
         //if let long = location.longitude, let lat = location.latitude{
             
@@ -68,7 +99,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
             
             clinicsLoader.getClinics(radius: 1000, longitude: location.longitude, latitude: location.latitude) { (clinics) in
                 self.allClinics = clinics
-                print("all\(clinics)")
+                self.allClinicsSearchArray = clinics
                 self.searchView?.delegate = self
                 self.searchView?.dataSource = self
             }
@@ -79,11 +110,18 @@ class MapViewModel: NSObject, LocationCoordinatble {
         self.searchView = searchView
         self.searchView?.placeholder = "Название клиники"
         self.searchView?.searchBarStyle = .minimal
+        self.searchView?.enablesReturnKeyAutomatically = true
+        self.searchView?.showsCancelButton = true
+        self.searchView?.slowExpandingTime = 0.25
+        
         self.searchView?.tableView.backgroundColor = .clear
         self.searchView?.contentView.layer.cornerRadius = 10
         self.searchView?.contentView.backgroundColor = UIColor.white.withAlphaComponent(0.9)
         self.searchView?.tableView.register(UINib(nibName: "AllClinics", bundle: nil), forCellReuseIdentifier: "AllClinics")
         delegate?.configureSearchView(searchView: self.searchView!)
+        
+        //self.searchView?.delegate = self
+        //print("delegate.: \(String(describing: self.searchView?.searchBar.delegate))")
     }
     
     func configureButtonsInMap(){
@@ -117,6 +155,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
         let sharedLocation = SharedLocation.instance
         let location = CLLocationCoordinate2D(latitude: sharedLocation.latitude, longitude: sharedLocation.longitude)
         mapView.animate(toLocation: location)
+
     }
     
     func configureSearchButton() -> UIButton{
@@ -215,9 +254,11 @@ class MapViewModel: NSObject, LocationCoordinatble {
         if(Double(round(10000*position.target.latitude)/10000) == Double(round(10000*marker.position.latitude)/10000) && Double(round(10000*position.target.longitude)/10000) == Double(round(10000*marker.position.longitude)/10000)){
             
             self.mapView.selectedMarker = marker
-            //marker.icon = UIImage(named: "Selected")
-            self.getCurrentClinic(marker: marker) { (clinics) in
-                marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+            self.getCurrentClinic(marker: marker) { (clinic) in
+                marker.icon = clinic.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+                self.isInfoClinicViewOpened = true
+                self.savedLastMarker = marker
+                self.delegateClinicID?.clinicId(id: clinic.id!)
             }
         }
     }
@@ -233,14 +274,17 @@ class MapViewModel: NSObject, LocationCoordinatble {
             let marker = findMarker(marker: markerInMap[0])
             self.mapView.selectedMarker = marker
             //marker.icon = UIImage(named: "Selected")
-            self.getCurrentClinic(marker: marker) { (clinics) in
-                marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+            self.getCurrentClinic(marker: marker) { (clinic) in
+                marker.icon = clinic.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+                self.isInfoClinicViewOpened = true
+                self.savedLastMarker = marker
+                self.delegateClinicID?.clinicId(id: clinic.id!)
             }
             
         }
     }
     
-    func getCurrentClinic(marker: GMSMarker, completion: @escaping (_ result: Clinics)->()){
+    func getCurrentClinic(marker: GMSMarker, completion: @escaping (_ result: Clinic)->()){
         let clinicsFilter = self.allClinics?.filter { $0.latitude == marker.position.latitude && $0.longitude ==  marker.position.longitude}
 
         if let clinics = clinicsFilter{
@@ -252,15 +296,15 @@ class MapViewModel: NSObject, LocationCoordinatble {
 }
 extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.allClinics?.count ?? 0
+        return self.allClinicsSearchArray?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "AllClinics", for: indexPath) as! AllClinics
-        let clinic  = self.allClinics?[indexPath.row]
+        let clinic  = self.allClinicsSearchArray?[indexPath.row]
         cell.titleClinic.text = clinic?.title
         cell.adresClinic.text = clinic?.address
-        cell.ratingClinic.text = clinic?.rating
+        cell.ratingClinic.text = "\(clinic?.rating ?? 0)"
         let distance = self.convertDistance(distance: clinic?.distance ?? 0)
         cell.distanceClinic.text = "\(distance.distanceInt)\(distance.distanceStr)"
         return cell
@@ -273,22 +317,79 @@ extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         searchView?.toggleExpand(.closed, fast: true)
         clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
-        if let clinic  = self.allClinics?[indexPath.row]{
+        if let clinic  = self.allClinicsSearchArray?[indexPath.row]{
         let camera = GMSCameraPosition.camera(withLatitude: clinic.latitude!, longitude: clinic.longitude!, zoom: zoom)
             self.mapView.animate(to: camera)
             self.findMarkerWithLocation(location: camera.target)
+            tableView.deselectRow(at: indexPath, animated: true)
+            self.searchView?.searchBarTextField.resignFirstResponder()
         }
     }
+    
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        //guard !searchText.isEmpty  else { allClinicsSearchArray = allClinics; return }
+//        print("begin1243")
+//
+//        allClinics = allClinics?.filter({ clinic -> Bool in
+//            return clinic.title!.lowercased().contains(searchText.lowercased())
+//        })
+//        self.searchView?.tableView.reloadData()
+//    }
+    
+    // MARK : SearchBar Controlelr Delegate Methods
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.searchView?.toggleExpand(.fullyExpanded)
+        filterContentForSearchText (searchText)
+    }
+    
+    func searchBarIsEmpty() -> Bool {
+        return (self.searchView?.searchBarTextField.text?.isEmpty)!
+    }
+    
+    func filterContentForSearchText(_ searchText: String, scope: String = "All") {
+        allClinicsSearchArray = allClinics?.filter({ clinic -> Bool in
+            return clinic.title!.lowercased().contains(searchText.lowercased())
+        })
+
+        if(allClinicsSearchArray?.count == 0){
+            allClinicsSearchArray = allClinics
+        }
+        self.searchView?.tableView.reloadData()
+    }
+    
+    func isFiltering() -> Bool {
+        return !searchBarIsEmpty()
+    }
+    
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+    
     
 }
 
 extension MapViewModel: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
-        self.getCurrentClinic(marker: marker) { (clinics) in
-            marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+        self.getCurrentClinic(marker: marker) { (clinic) in
+            marker.icon = clinic.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
+            self.isInfoClinicViewOpened = true
+            self.savedLastMarker = marker
+            self.delegateClinicID?.clinicId(id: clinic.id!)
         }
-       // marker.icon = UIImage(named: "Selected")
         if(isSerchViewOpened == true){
             searchView?.toggleExpand(.closed, fast: true)
             clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
@@ -322,12 +423,13 @@ extension MapViewModel: GMSMapViewDelegate{
     
     func mapView(_ mapView: GMSMapView, didCloseInfoWindowOf marker: GMSMarker) {
         
+        
         self.getCurrentClinic(marker: marker) { (clinics) in
             marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteNotSelected") : UIImage(named: "NotSelected")
         }
         
-        //marker.icon = UIImage(named: "NotSelected")
         clinicInfoViewModel.toggleExpand(state: .closed)
+            
     }
 }
 

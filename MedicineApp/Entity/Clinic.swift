@@ -10,14 +10,14 @@ import Foundation
 import Alamofire
 import ObjectMapper
 
-class Clinics: Mappable {
-    var id: String?
+class Clinic: Mappable {
+    var id: Int?
     var title: String?
     var highlight: Int?
     var address: String?
     var latitude: Double?
     var longitude: Double?
-    var rating: String?
+    var rating: Double?
     var distance: Int?
     
     required init?(map: Map){
@@ -25,7 +25,7 @@ class Clinics: Mappable {
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
+        id <- map["idClinic"]
         title <- map["title"]
         highlight <- map["highlight"]
         address <- map["address"]

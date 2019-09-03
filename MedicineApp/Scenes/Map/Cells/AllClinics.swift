@@ -14,9 +14,11 @@ class AllClinics: UITableViewCell {
     @IBOutlet var adresClinic: UILabel!
     @IBOutlet var ratingClinic: UILabel!
     @IBOutlet var distanceClinic: UILabel!
+    @IBOutlet var ratingView: UIView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        ratingView.layer.cornerRadius = 5
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
