@@ -18,4 +18,5 @@ enum StoryboardName: String{
     case comments = "Comments"
     case settings = "Settings"
     case services = "MedServices"
+    case clinicInfo = "ClinicInfo"
 }

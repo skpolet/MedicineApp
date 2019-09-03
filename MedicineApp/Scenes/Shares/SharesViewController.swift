@@ -12,21 +12,15 @@ class SharesViewController: UIViewController {
     
     weak var coordinator: SharesCoordinator?
 
+    @IBOutlet var tableView: UITableView!
+    @IBOutlet var searchBar: UISearchBar!
+    let viewModel = SharesViewModel()
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        viewModel.configureTable(table: tableView, type:.allShares)
+        viewModel.configureSearchBar(searchBar: searchBar)
+        viewModel.getAllShares()
     }
-    
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

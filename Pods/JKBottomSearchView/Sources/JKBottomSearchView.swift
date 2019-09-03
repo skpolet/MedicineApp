@@ -111,6 +111,7 @@ public class JKBottomSearchView: UIView{
     }
 
     private func setupView(){
+        
 
         let dragIndicationView = UIView(frame: .zero)
         dragIndicationView.backgroundColor = .lightGray
@@ -133,6 +134,7 @@ public class JKBottomSearchView: UIView{
         proxy.primaryDelegate = self
         searchBar.delegate = proxy
         searchBar.enablesReturnKeyAutomatically = false
+        searchBar.setValue("Отмена", forKey:"_cancelButtonText")
 
         let tableViewOriginY = searchBar.frame.origin.y + searchBar.frame.height
         tableView = UITableView(frame: CGRect(

@@ -22,9 +22,13 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
     
     func start() {
         splash.vc?.coordinator = self
-    
+        let mapViewModel = MapViewModel()
+        let locationServices = LocationServices.instance
+        locationServices.delegate = mapViewModel
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             self.navigationController.pushViewController(self.tabbar, animated: false)
+            self.navigationController.isNavigationBarHidden = true
             self.tabbar.navigationItem.hidesBackButton = true
         }
     }
@@ -32,24 +36,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
-//    func callSearchCoordinator(){
-//        let searchCoordinator = SearchCoordinator(navigationController: navigationController)
-//        fromCoordinator = searchCoordinator
-//        searchCoordinator.parentCoordinator = self
-//        childCoordinators.append(searchCoordinator)
-//        searchCoordinator.start()
-//
-//    }
-//
-//    func callMapCoordinator(){
-//        let mapCoordinator = MapCoordinator(navigationController: navigationController)
-//        fromCoordinator = mapCoordinator
-//        mapCoordinator.parentCoordinator = self
-//        childCoordinators.append(mapCoordinator)
-//        mapCoordinator.start()
-//
-//    }
     
     func childDidFinish(_ child: Coordinator?){
         for (index, coordinator) in childCoordinators.enumerated(){
@@ -76,12 +62,6 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
             childDidFinish(childCoordinator)
         }
     }
-    
-    // MARK: UITabBarItem
-    
-//    func setTabBarItem(){
-//        splash.vc?.tabBarItem = UITabBarItem(tabBarSystemItem: .featured, tag: 0)
-//    }
     
 }
 
