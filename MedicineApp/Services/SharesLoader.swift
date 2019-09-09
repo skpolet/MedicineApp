@@ -14,8 +14,8 @@ class SharesLoader {
     
     func getShareWithId(idClinic: Int, completion: @escaping (_ result: [Share])->()){
         
-        print("request : https://mp3cloud.ru/dentallapp/shares.php?idClinic=\(idClinic)")
-        Alamofire.request("https://mp3cloud.ru/dentallapp/shares.php?idClinic=\(idClinic)",
+        //print("request : https://\(Adress.domain.value())/\(Adress.versionAPI.value())/shares.php?idClinic=\(idClinic)")
+        Alamofire.request("https://\(Adress.domain.value())/\(Adress.versionAPI.value())/shares.php?idClinic=\(idClinic)",
             method: .get).responseJSON {
                 response in
                 if let comment = Mapper<Share>().mapArray(JSONObject:response.result.value){
@@ -25,16 +25,20 @@ class SharesLoader {
         }
     }
     
-    func getShares(completion: @escaping (_ result: [Share])->()){
+    func getShares(completion: @escaping (_ result: [Share], _ connectionStatus: ReachabilityStatus)->()){
         
-        //print("request : https://mp3cloud.ru/dentallapp/shares.php")
-        Alamofire.request("https://mp3cloud.ru/dentallapp/shares.php",
+        //print("request : https://\(Adress.domain.value())/\(Adress.versionAPI.value())/shares.php")
+        Alamofire.request("https://\(Adress.domain.value())/\(Adress.versionAPI.value())/shares.php",
             method: .get).responseJSON {
                 response in
-                if let comment = Mapper<Share>().mapArray(JSONObject:response.result.value){
-                    completion(comment)
+                let status = Reach().connectionStatus()
+                if let shares = Mapper<Share>().mapArray(JSONObject:response.result.value){
+                    completion(shares,status)
                     
+                }else{
+                    completion([],status)
                 }
+                
         }
     }
     

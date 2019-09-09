@@ -28,6 +28,9 @@ target 'MedicineApp' do
   # события для uitableview
   # pod 'StatefulTableView'
   
+  #события для uitableview
+  pod 'SDStateTableView'
+  
   # вью поверх карты с таблицей и поисковиком
   pod 'JKBottomSearchView'
   
@@ -36,5 +39,11 @@ target 'MedicineApp' do
   
   # библиотека autolauout
   pod 'SnapKit', '~> 5.0.0'
+  
+  # библиотека уведомлений
+  pod 'NotificationBannerSwift'
+  
+  #библиотека для отрисовки голосования
+  pod 'Cosmos', '~> 19.0'
   
 end

@@ -30,6 +30,11 @@ class MainCoordinator: NSObject, Coordinator, UINavigationControllerDelegate{
             self.navigationController.pushViewController(self.tabbar, animated: false)
             self.navigationController.isNavigationBarHidden = true
             self.tabbar.navigationItem.hidesBackButton = true
+            self.childCoordinators.append(self.tabbar.mapCoordinator)
+            self.childCoordinators.append(self.tabbar.sharesCoordinator)
+            self.childCoordinators.append(self.tabbar.servicesCoordinator)
+            self.childCoordinators.append(self.tabbar.commentsCoordinator)
+            self.tabbar.sharesCoordinator.childCoordinators = self.childCoordinators
         }
     }
     

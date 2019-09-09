@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyDZARmmMu8nnyW5SP3XeeASajhd08QK4q4")
         GMSPlacesClient.provideAPIKey("AIzaSyDZARmmMu8nnyW5SP3XeeASajhd08QK4q4")
         
+        
         initWithSplash()
     
         return true

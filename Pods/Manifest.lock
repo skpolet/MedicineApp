@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.2)
+  - Cosmos (19.0.3)
   - DeepDiff (2.2.0)
   - GoogleMaps (3.2.0):
     - GoogleMaps/Maps (= 3.2.0)
@@ -9,37 +10,53 @@ PODS:
   - GooglePlaces (3.2.0):
     - GoogleMaps/Base (= 3.2.0)
   - JKBottomSearchView (1.1.1)
+  - MarqueeLabel (4.0.0)
+  - NotificationBannerSwift (2.5.1):
+    - MarqueeLabel (~> 4.0.0)
+    - SnapKit (~> 5.0.0)
   - ObjectMapper (3.5.1)
+  - SDStateTableView (0.0.3)
   - SnapKit (5.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 4.8.0)
+  - Cosmos (~> 19.0)
   - DeepDiff
   - GoogleMaps
   - GooglePlaces
   - JKBottomSearchView
+  - NotificationBannerSwift
   - ObjectMapper
+  - SDStateTableView
   - SnapKit (~> 5.0.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - Cosmos
     - DeepDiff
     - GoogleMaps
     - GooglePlaces
     - JKBottomSearchView
+    - MarqueeLabel
+    - NotificationBannerSwift
     - ObjectMapper
+    - SDStateTableView
     - SnapKit
 
 SPEC CHECKSUMS:
   Alamofire: ae5c501addb7afdbb13687d7f2f722c78734c2d3
+  Cosmos: a6fb17284281fa12cf4c85c2efecd440a215ec44
   DeepDiff: e329bc46dd14ca788d8ec08d34420799ba1d77f2
   GoogleMaps: 5046d7edfe381c1a0b20fdaf293915a375c3122b
   GooglePlaces: 41bc2e480816b1234a48f4bec92e1c886f37cfe1
   JKBottomSearchView: 868596c9bbf498cc28e62cdcdffd52621f07d55f
+  MarqueeLabel: b55b26e690b6ad41faedd95cbf5eae6f1d1735b4
+  NotificationBannerSwift: e55dd801b0d78f1a7bacb10d722a935ec95f94a3
   ObjectMapper: 70187b8941977c62ccfb423caf6b50be405cabf0
+  SDStateTableView: cb4dd2a3b6d31850a70e91c19dc79ab127a8e7c6
   SnapKit: fd22d10eb9aff484d79a8724eab922c1ddf89bcf
 
-PODFILE CHECKSUM: 23dd8d7e113d457f4119479f028b682eca8a4718
+PODFILE CHECKSUM: 85599af13578cef00fab3440f740b53b665199ef
 
 COCOAPODS: 1.7.5

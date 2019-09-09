@@ -6,128 +6,90 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsClinicInfo" rowHeight="76" id="KGk-i7-Jjw" customClass="ActionsClinicInfo" customModule="MedicineApp" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="368" height="76"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="368" height="75.5"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActionsClinicInfo" rowHeight="108" id="aG2-Ua-ESC" customClass="ActionsClinicInfo" customModule="MedicineApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="616" height="108"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="aG2-Ua-ESC" id="IM9-8f-fX4">
+                <rect key="frame" x="0.0" y="0.0" width="616" height="107.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="m1d-nW-yCF">
-                        <rect key="frame" x="43.5" y="3.5" width="281" height="68.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PK5-QQ-Pt8">
+                        <rect key="frame" x="112.5" y="19" width="391.5" height="70"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nAo-5d-Ssz">
-                                <rect key="frame" x="0.0" y="0.0" width="55.5" height="68.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D7w-Hx-VbX">
-                                        <rect key="frame" x="20" y="20" width="15.5" height="27"/>
-                                        <state key="normal" image="track"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Маршрут" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3oN-z5-uyz">
-                                        <rect key="frame" x="0.5" y="53" width="54.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mfb-yz-0dn">
+                                <rect key="frame" x="0.0" y="0.0" width="94.5" height="70"/>
                                 <constraints>
-                                    <constraint firstItem="D7w-Hx-VbX" firstAttribute="leading" secondItem="nAo-5d-Ssz" secondAttribute="leading" constant="20" id="SRD-c9-3gY"/>
-                                    <constraint firstItem="D7w-Hx-VbX" firstAttribute="top" secondItem="nAo-5d-Ssz" secondAttribute="top" constant="20" id="YFD-lV-gwy"/>
-                                    <constraint firstAttribute="bottom" secondItem="3oN-z5-uyz" secondAttribute="bottom" constant="1" id="ZRe-5O-3sk"/>
-                                    <constraint firstItem="3oN-z5-uyz" firstAttribute="centerX" secondItem="D7w-Hx-VbX" secondAttribute="centerX" id="iYn-tm-hlm"/>
-                                    <constraint firstItem="3oN-z5-uyz" firstAttribute="top" secondItem="D7w-Hx-VbX" secondAttribute="bottom" constant="6" id="kMC-7K-4b7"/>
-                                    <constraint firstAttribute="trailing" secondItem="D7w-Hx-VbX" secondAttribute="trailing" constant="20" id="su7-bp-Ppk"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="GqM-BQ-1rM"/>
+                                    <constraint firstAttribute="height" constant="70" id="uCH-Cc-Ssm"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5rS-6O-jcl">
-                                <rect key="frame" x="65.5" y="0.0" width="64" height="68.5"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hqt-D8-peK">
-                                        <rect key="frame" x="20" y="20" width="24" height="27"/>
-                                        <state key="normal" image="inMap"/>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На карте" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HlX-Ba-a2B">
-                                        <rect key="frame" x="6" y="53" width="52.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="-10" minY="40" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="40" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Маршрут" image="track">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <state key="selected" title="Маршрут" image="track">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <state key="highlighted" title="Маршрут" image="track">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tra-Ov-hhQ">
+                                <rect key="frame" x="94.5" y="0.0" width="97.5" height="70"/>
                                 <constraints>
-                                    <constraint firstItem="HlX-Ba-a2B" firstAttribute="centerX" secondItem="5rS-6O-jcl" secondAttribute="centerX" id="BZI-ET-jpA"/>
-                                    <constraint firstAttribute="bottom" secondItem="HlX-Ba-a2B" secondAttribute="bottom" constant="1" id="O4G-mi-RGN"/>
-                                    <constraint firstItem="hqt-D8-peK" firstAttribute="leading" secondItem="5rS-6O-jcl" secondAttribute="leading" constant="20" id="WKz-vV-AF5"/>
-                                    <constraint firstItem="hqt-D8-peK" firstAttribute="top" secondItem="5rS-6O-jcl" secondAttribute="top" constant="20" id="Wa3-Cj-i0K"/>
-                                    <constraint firstItem="HlX-Ba-a2B" firstAttribute="top" secondItem="hqt-D8-peK" secondAttribute="bottom" constant="6" id="dgD-fa-mEW"/>
-                                    <constraint firstAttribute="trailing" secondItem="hqt-D8-peK" secondAttribute="trailing" constant="20" id="kwZ-8W-1Ox"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="OC1-GB-nMo"/>
+                                    <constraint firstAttribute="height" constant="70" id="RMW-Ah-I3V"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZRR-3c-DgX">
-                                <rect key="frame" x="139.5" y="0.0" width="65" height="68.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Позвонить" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Dv-Um-iG1">
-                                        <rect key="frame" x="1" y="53" width="63" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMk-ef-DP6">
-                                        <rect key="frame" x="20" y="20" width="25" height="27"/>
-                                        <state key="normal" image="call"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="-18" minY="40" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="39" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="На карте" image="inMap">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wv9-LP-J1r">
+                                <rect key="frame" x="192" y="0.0" width="100" height="70"/>
                                 <constraints>
-                                    <constraint firstItem="sMk-ef-DP6" firstAttribute="top" secondItem="ZRR-3c-DgX" secondAttribute="top" constant="20" id="FSR-b1-Z0m"/>
-                                    <constraint firstItem="sMk-ef-DP6" firstAttribute="leading" secondItem="ZRR-3c-DgX" secondAttribute="leading" constant="20" id="RxZ-GJ-8NW"/>
-                                    <constraint firstItem="1Dv-Um-iG1" firstAttribute="top" secondItem="sMk-ef-DP6" secondAttribute="bottom" constant="6" id="aoN-9g-rtj"/>
-                                    <constraint firstAttribute="bottom" secondItem="1Dv-Um-iG1" secondAttribute="bottom" constant="1" id="obS-oG-6n0"/>
-                                    <constraint firstItem="1Dv-Um-iG1" firstAttribute="centerX" secondItem="ZRR-3c-DgX" secondAttribute="centerX" id="sgV-13-MmE"/>
-                                    <constraint firstAttribute="trailing" secondItem="sMk-ef-DP6" secondAttribute="trailing" constant="20" id="vBn-Vf-ui0"/>
+                                    <constraint firstAttribute="height" constant="70" id="Vp6-eb-bH6"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="tm6-oi-JIm"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="r3C-pN-RTz">
-                                <rect key="frame" x="214.5" y="0.0" width="66.5" height="68.5"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Оценить" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qww-5Y-DS2">
-                                        <rect key="frame" x="8" y="53" width="50.5" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rtj-yg-0dM">
-                                        <rect key="frame" x="20" y="20" width="26.5" height="27"/>
-                                        <state key="normal" image="rate"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <inset key="titleEdgeInsets" minX="-20" minY="40" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="31" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Позвонить" image="call">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gv5-ad-7IN">
+                                <rect key="frame" x="292" y="0.0" width="99.5" height="70"/>
                                 <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="rtj-yg-0dM" secondAttribute="trailing" constant="20" id="7y3-lx-g61"/>
-                                    <constraint firstItem="Qww-5Y-DS2" firstAttribute="centerX" secondItem="r3C-pN-RTz" secondAttribute="centerX" id="Hvc-pZ-FPw"/>
-                                    <constraint firstItem="Qww-5Y-DS2" firstAttribute="top" secondItem="rtj-yg-0dM" secondAttribute="bottom" constant="6" id="QWK-wJ-2og"/>
-                                    <constraint firstItem="rtj-yg-0dM" firstAttribute="leading" secondItem="r3C-pN-RTz" secondAttribute="leading" constant="20" id="fCp-Ar-PXe"/>
-                                    <constraint firstItem="rtj-yg-0dM" firstAttribute="top" secondItem="r3C-pN-RTz" secondAttribute="top" constant="20" id="mWR-d5-u6g"/>
-                                    <constraint firstAttribute="bottom" secondItem="Qww-5Y-DS2" secondAttribute="bottom" constant="1" id="pCd-2R-NrJ"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="100" id="Y7d-bW-irw"/>
+                                    <constraint firstAttribute="height" constant="70" id="m8E-r3-K6b"/>
                                 </constraints>
-                            </view>
+                                <inset key="titleEdgeInsets" minX="-20" minY="40" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="33" minY="-10" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Оценить" image="rate">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
                         </subviews>
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="m1d-nW-yCF" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="GhW-X1-Afv"/>
-                    <constraint firstItem="m1d-nW-yCF" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="cmJ-fU-o5S"/>
+                    <constraint firstItem="PK5-QQ-Pt8" firstAttribute="centerX" secondItem="IM9-8f-fX4" secondAttribute="centerX" id="BKa-ZU-CsL"/>
+                    <constraint firstItem="PK5-QQ-Pt8" firstAttribute="centerY" secondItem="IM9-8f-fX4" secondAttribute="centerY" id="HJG-og-H0V"/>
                 </constraints>
             </tableViewCellContentView>
-            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
-            <point key="canvasLocation" x="169.56521739130437" y="108.48214285714285"/>
+            <connections>
+                <outlet property="callButton" destination="Wv9-LP-J1r" id="Z03-c9-n7b"/>
+                <outlet property="mapButton" destination="tra-Ov-hhQ" id="Fma-xP-clB"/>
+                <outlet property="rateButton" destination="gv5-ad-7IN" id="kHP-lY-zeB"/>
+                <outlet property="trackButton" destination="Mfb-yz-0dn" id="frV-gd-ttO"/>
+            </connections>
+            <point key="canvasLocation" x="249.27536231884059" y="263.16964285714283"/>
         </tableViewCell>
     </objects>
     <resources>

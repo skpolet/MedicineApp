@@ -18,30 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="D8x-Wb-t7V">
-                                <rect key="frame" x="0.0" y="44" width="414" height="56"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </searchBar>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b32-yw-I2t">
-                                <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="b32-yw-I2t" customClass="SDStateTableView" customModule="SDStateTableView">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="shouldScrollWithNoData" value="NO"/>
+                                </userDefinedRuntimeAttributes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="D8x-Wb-t7V" firstAttribute="top" secondItem="AuC-nx-tpN" secondAttribute="top" id="20T-ZV-iUe"/>
-                            <constraint firstItem="D8x-Wb-t7V" firstAttribute="trailing" secondItem="AuC-nx-tpN" secondAttribute="trailing" id="46l-0p-uy0"/>
                             <constraint firstItem="AuC-nx-tpN" firstAttribute="bottom" secondItem="b32-yw-I2t" secondAttribute="bottom" id="EW5-Ue-xoc"/>
                             <constraint firstItem="b32-yw-I2t" firstAttribute="leading" secondItem="AuC-nx-tpN" secondAttribute="leading" id="rSH-gy-OC4"/>
-                            <constraint firstItem="D8x-Wb-t7V" firstAttribute="leading" secondItem="AuC-nx-tpN" secondAttribute="leading" id="waj-L4-8sa"/>
+                            <constraint firstItem="b32-yw-I2t" firstAttribute="top" secondItem="AuC-nx-tpN" secondAttribute="top" id="tMZ-Go-Mkx"/>
                             <constraint firstItem="b32-yw-I2t" firstAttribute="trailing" secondItem="AuC-nx-tpN" secondAttribute="trailing" id="zTH-9Z-F9T"/>
-                            <constraint firstItem="b32-yw-I2t" firstAttribute="top" secondItem="D8x-Wb-t7V" secondAttribute="bottom" id="zlz-V4-TAF"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="AuC-nx-tpN"/>
                     </view>
                     <connections>
-                        <outlet property="searchBar" destination="D8x-Wb-t7V" id="2C5-KM-Yz4"/>
-                        <outlet property="tableView" destination="b32-yw-I2t" id="krU-w5-IAg"/>
+                        <outlet property="tableView" destination="b32-yw-I2t" id="IQl-uk-QkU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kAB-t3-f3R" userLabel="First Responder" sceneMemberID="firstResponder"/>
