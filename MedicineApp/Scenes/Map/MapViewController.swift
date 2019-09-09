@@ -35,6 +35,7 @@ class MapViewController: UIViewController {
         mapView?.isMyLocationEnabled = true
         self.view.addSubview(mapView!)
         viewModel.configuringMap(mapView: mapView!)
+        viewModel.configureCoordinator(coordinator: coordinator!)
         
         let searchView = JKBottomSearchView()
         viewModel.configureSearchView(searchView: searchView)
@@ -62,6 +63,10 @@ class MapViewController: UIViewController {
 
 }
 extension MapViewController: MapViewModelDelegate{
+    func showAlert(alert: UIAlertController) {
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     
 //    func configureMap(camera: GMSCameraPosition) {
 //        mapView?.animate(to: camera)
@@ -88,7 +93,7 @@ extension MapViewController: MapViewModelDelegate{
         self.btnPlus = button
         button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(50)
-            make.top.equalTo(self.btnSearch!).offset(-65)
+            make.top.equalTo(self.btnMinus!).offset(-65)
             make.right.equalTo(self.view).offset(-20)
         }
     }
@@ -98,7 +103,7 @@ extension MapViewController: MapViewModelDelegate{
         self.btnMinus = button
         button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(50)
-            make.top.equalTo(self.btnPlus!).offset(-65)
+            make.top.equalTo(self.btnSearch!).offset(-65)
             make.right.equalTo(self.view).offset(-20)
         }
     }
@@ -108,7 +113,7 @@ extension MapViewController: MapViewModelDelegate{
         self.btnTarget = button
         button.snp.makeConstraints { (make) -> Void in
             make.width.height.equalTo(50)
-            make.top.equalTo(self.btnMinus!).offset(-65)
+            make.top.equalTo(self.btnPlus!).offset(-65)
             make.right.equalTo(self.view).offset(-20)
         }
     }

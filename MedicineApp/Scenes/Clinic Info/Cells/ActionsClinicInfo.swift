@@ -10,6 +10,10 @@ import UIKit
 
 class ActionsClinicInfo: UITableViewCell {
 
+    @IBOutlet var trackButton: UIButton!
+    @IBOutlet var mapButton: UIButton!
+    @IBOutlet var callButton: UIButton!
+    @IBOutlet var rateButton: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

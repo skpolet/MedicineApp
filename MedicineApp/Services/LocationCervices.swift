@@ -40,7 +40,7 @@ class LocationServices : NSObject, CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+        //print("locations = \(locValue.latitude) \(locValue.longitude)")
         retreiveCityName(lattitude: locValue.latitude, longitude: locValue.longitude)
         //delegate?.currentLocation(longitude: locValue.longitude, latitude: locValue.latitude)
         location.longitude = locValue.longitude
@@ -59,7 +59,7 @@ class LocationServices : NSObject, CLLocationManagerDelegate {
                     self.location.region = region
                 }
 
-                self.locationManager.stopUpdatingLocation()
+                //self.locationManager.stopUpdatingLocation()
         })
     }
 

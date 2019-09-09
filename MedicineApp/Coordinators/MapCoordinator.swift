@@ -24,6 +24,18 @@ class MapCoordinator: Coordinator{
         navigationController.pushViewController(mapVC.vc!, animated: true)
     }
     
+    func toOnce(){
+        let onceShare = SharesBuilder(type: .onceShare)
+        onceShare.oncevc?.coordinator = self
+        navigationController.pushViewController(onceShare.oncevc!, animated: true)
+    }
+    
+//    func toRate(){
+//        let rateVC = RateClinicBuilder()
+//        rateVC.vc?.coordinator = self
+//        navigationController.pushViewController(rateVC.vc!, animated: true)
+//    }
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }

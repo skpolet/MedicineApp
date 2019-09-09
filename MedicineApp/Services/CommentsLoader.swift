@@ -14,8 +14,8 @@ class CommentLoader{
 
 func getCommentWithId(id: Int, completion: @escaping (_ result: Comment)->()){
     
-    //print("request : https://mp3cloud.ru/dentallapp/comments.php?idComment=\(id) ")
-    Alamofire.request("https://mp3cloud.ru/dentallapp/comments.php?idComment=\(id)",
+    //print("request : https://\(Adress.domain.value())/\(Adress.versionAPI.value())/comments.php?idComment=\(id)")
+    Alamofire.request("https://\(Adress.domain.value())/\(Adress.versionAPI.value())/comments.php?idComment=\(id)",
         method: .get).responseJSON {
             response in
             if let comment = Mapper<Comment>().map(JSONObject:response.result.value){
@@ -27,8 +27,8 @@ func getCommentWithId(id: Int, completion: @escaping (_ result: Comment)->()){
 
 func getComments(idClinic: Int, completion: @escaping (_ result: [Comment])->()){
     
-    //print("request : https://mp3cloud.ru/dentallapp/comments.php?idClinic=\(idClinic)")
-    Alamofire.request("https://mp3cloud.ru/dentallapp/comments.php?idClinic=\(idClinic)",
+    //print("request : https://\(Adress.domain.value())/\(Adress.versionAPI.value())/comments.php?idClinic=\(idClinic)")
+    Alamofire.request("https://\(Adress.domain.value())/\(Adress.versionAPI.value())/comments.php?idClinic=\(idClinic)",
         method: .get).responseJSON {
             response in
             if let comment = Mapper<Comment>().mapArray(JSONObject:response.result.value){

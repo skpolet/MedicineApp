@@ -21,10 +21,14 @@ enum State{
 //    func didClosed()
 //}
 
+protocol ClinicInfoViewTransitionDelegate : class{
+    func translations(destinationInfo:CGFloat, destinationImage:CGFloat)
+}
+
 class ClinicInfoViewTransition {
     
     //var delegate: HandleDelegate?
-    //weak var delegate: ClinicInfoViewTransitionDelegate?
+    weak var delegate: ClinicInfoViewTransitionDelegate?
     
     var currentExpandedState: State = .closed
     
@@ -41,6 +45,12 @@ class ClinicInfoViewTransition {
     let imageView: ClinicTransitionableView
     let infoView: ClinicTransitionableView
     
+    var heightImage: CGFloat = 0
+    
+    func setHeightImage(){
+        let toCenterDistanceInfo = infoView.toCenterDistance(maximalYPosition: maximalYPositionInfoView, minimalYPosition: minimalYPositionInfoView)
+        heightImage = CGFloat(toCenterDistanceInfo) + 20
+    }
     
     init(imageView: ClinicTransitionableView, infoView: ClinicTransitionableView) {
         self.imageView = imageView
@@ -62,6 +72,8 @@ class ClinicInfoViewTransition {
         maximalYPositionImageView = UIWindow().frame.height / 1.65
         
         closedYPositionInfoView = UIWindow().frame.height
+        
+        setHeightImage()
     }
 }
 
@@ -142,10 +154,14 @@ extension ClinicInfoViewTransition: HandleDelegate {
 //                destinationYImageView = maximalYPositionImageView
 //            }
             
+
+            
             infoView.frame.origin.y = destinationYInfoView
             imageView.frame.origin.y = destinationYImageView
             sender.setTranslation(CGPoint.zero, in: infoView)
             sender.setTranslation(CGPoint.zero, in: imageView)
+            
+            self.delegate?.translations(destinationInfo: infoView.frame.origin.y , destinationImage: imageView.frame.origin.y )
             
         }
         
@@ -166,6 +182,7 @@ extension ClinicInfoViewTransition: HandleDelegate {
             }
         }
         self.currentExpandedState = state
+        self.delegate?.translations(destinationInfo: infoView.frame.origin.y , destinationImage: imageView.frame.origin.y )
     }
     
     func toggleExpandImage(_ state: State){
@@ -189,6 +206,7 @@ extension ClinicInfoViewTransition: HandleDelegate {
             }
         }
         self.currentExpandedState = state
+        self.delegate?.translations(destinationInfo: infoView.frame.origin.y , destinationImage: imageView.frame.origin.y )
     }
 
 }

@@ -16,12 +16,13 @@ class SharesCoordinator: Coordinator{
     
     var navigationController: UINavigationController
     
-    let shares = SharesBuilder()
+    let shares = SharesBuilder(type: .allShares)
     
     func start() {
         shares.vc?.coordinator = self
         navigationController.pushViewController(shares.vc!, animated: true)
     }
+    
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

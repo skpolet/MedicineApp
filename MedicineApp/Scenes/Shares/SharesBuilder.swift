@@ -9,10 +9,22 @@
 import Foundation
 import UIKit
 
+enum ShareType{
+    case onceShare
+    case allShares
+}
+
 class SharesBuilder{
     weak var vc : SharesViewController?
     
-    init() {
+    weak var oncevc : OnceShareViewController?
+    
+    init(type: ShareType) {
+        if(type == .allShares){
         vc  = UIStoryboard.load(.shares, with: String(describing: SharesViewController.self))
+        }else{
+        oncevc  = UIStoryboard.load(.onceShare, with: String(describing: OnceShareViewController.self))
+        }
     }
+    
 }

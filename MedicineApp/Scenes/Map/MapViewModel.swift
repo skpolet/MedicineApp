@@ -10,6 +10,7 @@ import Foundation
 import GoogleMaps
 import JKBottomSearchView
 import SnapKit
+import NotificationBannerSwift
 
 protocol MapViewModelDelegate: class {
     //func configureMap(camera: GMSCameraPosition)
@@ -18,16 +19,19 @@ protocol MapViewModelDelegate: class {
     func configurePlusButton(button: UIButton)
     func configureMinusButton(button: UIButton)
     func configureTargetButton(button: UIButton)
+    func showAlert(alert:UIAlertController)
 }
 
 protocol SelectedClinicIdDelegate: class {
     func clinicId(id: Int)
+    func mapCoordinator(coordinator: MapCoordinator)
 }
 
 class MapViewModel: NSObject, LocationCoordinatble {
     
     weak var delegate : MapViewModelDelegate?
     weak var delegateClinicID : SelectedClinicIdDelegate?
+    weak var coordinatorMap: MapCoordinator?
     
     lazy var btnSearch = UIButton(type: UIButton.ButtonType.roundedRect)
     lazy var btnPlus = UIButton(type: UIButton.ButtonType.roundedRect)
@@ -48,6 +52,8 @@ class MapViewModel: NSObject, LocationCoordinatble {
     var zoom: Float = 15
     var isSerchViewOpened: Bool = true
     var isInfoClinicViewOpened: Bool = true
+    
+    let queueClinicInfo = DispatchQueue(label: "clinic-info-logic",qos: .userInitiated)
     
 //    func currentLocation(longitude: Double?, latitude: Double?) {
 //        //if(coordinats.lat == nil && coordinats.long == nil){
@@ -70,6 +76,10 @@ class MapViewModel: NSObject, LocationCoordinatble {
         }
         }
         
+    }
+    
+    func configureCoordinator(coordinator: MapCoordinator){
+        self.coordinatorMap = coordinator
     }
 
     func configuringMap(mapView: GMSMapView){
@@ -96,16 +106,40 @@ class MapViewModel: NSObject, LocationCoordinatble {
             configureButtonsInMap()
         
             /////
-            
-            clinicsLoader.getClinics(radius: 1000, longitude: location.longitude, latitude: location.latitude) { (clinics) in
-                self.allClinics = clinics
-                self.allClinicsSearchArray = clinics
-                self.searchView?.delegate = self
-                self.searchView?.dataSource = self
-            }
-        //}
+        if(location.longitude != 0 && location.latitude != 0){
+            clinicsLoader.getClinics(radius: 10000, longitude: location.longitude, latitude: location.latitude) { (clinics, status) in
 
+                switch status {
+                case .unknown, .offline:
+                    let banner = GrowingNotificationBanner(title: "Упс, что-то полшло не так!", subtitle: "Проверьте интернет соединение", style:.danger )
+                    banner.show()
+                case .online(.wwan), .online(.wiFi):
+                    self.allClinics = clinics
+                    self.allClinicsSearchArray = clinics
+                    self.searchView?.delegate = self
+                    self.searchView?.dataSource = self
+                }
+            }
+        }else{
+            clinicsLoader.getClinics(radius: 10000, longitude: 37.6117211, latitude:55.752199 ) { (clinics, status) in
+                switch status {
+                case .unknown, .offline:
+                    let banner = GrowingNotificationBanner(title: "Упс, что-то полшло не так!", subtitle: "Проверьте интернет соединение", style:.danger )
+                    banner.show()
+                case .online(.wwan), .online(.wiFi):
+                    let camera = GMSCameraPosition.camera(withLatitude: 55.752199, longitude: 37.611721, zoom: self.zoom)
+                    self.mapView.animate(to: camera)
+                    self.allClinics = clinics
+                    self.allClinicsSearchArray = clinics
+                    self.searchView?.delegate = self
+                    self.searchView?.dataSource = self
+                }
+
+                //55.752199, 37.611721 -- москва центр
+            }
+        }
     }
+    
     func configureSearchView(searchView: JKBottomSearchView){
         self.searchView = searchView
         self.searchView?.placeholder = "Название клиники"
@@ -126,8 +160,8 @@ class MapViewModel: NSObject, LocationCoordinatble {
     
     func configureButtonsInMap(){
         delegate?.configureSearchButton(button: configureSearchButton())
-        delegate?.configurePlusButton(button: configurePlusButton())
         delegate?.configureMinusButton(button: configureMinusButton())
+        delegate?.configurePlusButton(button: configurePlusButton())
         delegate?.configureTargetButton(button: configureCurrentTargetButton())
     }
     
@@ -152,9 +186,27 @@ class MapViewModel: NSObject, LocationCoordinatble {
     }
     
     @objc func personTargetMap(){
+        let location = SharedLocation.instance
+        if(location.longitude != 0 && location.latitude != 0){
         let sharedLocation = SharedLocation.instance
         let location = CLLocationCoordinate2D(latitude: sharedLocation.latitude, longitude: sharedLocation.longitude)
         mapView.animate(toLocation: location)
+        }else{
+            let alert = UIAlertController(title: "Геолокация отключена", message: "Пожалуйста разрешите этому приложению использовать геолокацию", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Продолжить", style: UIAlertAction.Style.cancel, handler: nil))
+            alert.addAction(UIAlertAction(title: "Настройки", style: UIAlertAction.Style.default, handler: { (action) in
+                if let url = URL(string:UIApplication.openSettingsURLString) {
+                    if UIApplication.shared.canOpenURL(url) {
+                        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    }
+                }
+            }))
+            delegate?.showAlert(alert: alert)
+
+            //self.presentViewController(alert, animated: true, completion: nil)
+            
+
+        }
 
     }
     
@@ -259,6 +311,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
                 self.isInfoClinicViewOpened = true
                 self.savedLastMarker = marker
                 self.delegateClinicID?.clinicId(id: clinic.id!)
+                self.delegateClinicID?.mapCoordinator(coordinator: self.coordinatorMap!)
             }
         }
     }
@@ -266,6 +319,11 @@ class MapViewModel: NSObject, LocationCoordinatble {
     func findMarker(marker: GMSMarker) ->GMSMarker{
         let indexOfMarker = self.allMarkers.firstIndex(of: marker)
         return self.allMarkers[indexOfMarker!]
+    }
+    
+    func findClinic(clinic: Clinic) ->Clinic{
+        let index = self.allClinicsSearchArray?.firstIndex(where: {$0.latitude == clinic.latitude && $0.longitude == clinic.longitude})
+        return (self.allClinicsSearchArray?[index!])!
     }
     
     func findMarkerWithLocation(location: CLLocationCoordinate2D){
@@ -279,6 +337,7 @@ class MapViewModel: NSObject, LocationCoordinatble {
                 self.isInfoClinicViewOpened = true
                 self.savedLastMarker = marker
                 self.delegateClinicID?.clinicId(id: clinic.id!)
+                self.delegateClinicID?.mapCoordinator(coordinator: self.coordinatorMap!)
             }
             
         }
@@ -292,6 +351,35 @@ class MapViewModel: NSObject, LocationCoordinatble {
                 completion(clinics[0])
             }
         }
+    }
+    
+    func openClinicWithClinic(clinic: Clinic){
+        let status = Reach().connectionStatus()
+        switch status {
+        case .unknown, .offline:
+            let banner = GrowingNotificationBanner(title: "Упс, что-то полшло не так!", subtitle: "Проверьте интернет соединение", style:.danger )
+            banner.show()
+        case .online(.wwan), .online(.wiFi):
+            searchView?.toggleExpand(.closed, fast: true)
+            clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
+            //if let clinic  = self.allClinicsSearchArray?[indexPath.row]{
+                let camera = GMSCameraPosition.camera(withLatitude: clinic.latitude!, longitude: clinic.longitude!, zoom: zoom)
+                self.mapView.animate(to: camera)
+                self.findMarkerWithLocation(location: camera.target)
+                self.searchView?.searchBarTextField.resignFirstResponder()
+            //}
+        }
+    }
+    
+    func newTrack(clinic: Clinic){
+        let drawRoute = DrawRoute()
+        let location = SharedLocation.instance
+        //let polyline = drawRoute.getPolylineRoute(clinic: clinic,myLong: location.longitude, myLat: location.latitude, completion: (GMSPolyline))
+        _ = drawRoute.getPolylineRoute(clinic: clinic, myLong: location.longitude, myLat: location.latitude){
+            (polyline) in
+            polyline.map = self.mapView
+        }
+        
     }
 }
 extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
@@ -315,15 +403,24 @@ extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        searchView?.toggleExpand(.closed, fast: true)
-        clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
-        if let clinic  = self.allClinicsSearchArray?[indexPath.row]{
-        let camera = GMSCameraPosition.camera(withLatitude: clinic.latitude!, longitude: clinic.longitude!, zoom: zoom)
-            self.mapView.animate(to: camera)
-            self.findMarkerWithLocation(location: camera.target)
-            tableView.deselectRow(at: indexPath, animated: true)
-            self.searchView?.searchBarTextField.resignFirstResponder()
+        let status = Reach().connectionStatus()
+        
+        switch status {
+        case .unknown, .offline:
+            let banner = GrowingNotificationBanner(title: "Упс, что-то полшло не так!", subtitle: "Проверьте интернет соединение", style:.danger )
+            banner.show()
+        case .online(.wwan), .online(.wiFi):
+            searchView?.toggleExpand(.closed, fast: true)
+            clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
+            if let clinic  = self.allClinicsSearchArray?[indexPath.row]{
+                let camera = GMSCameraPosition.camera(withLatitude: clinic.latitude!, longitude: clinic.longitude!, zoom: zoom)
+                self.mapView.animate(to: camera)
+                self.findMarkerWithLocation(location: camera.target)
+                self.searchView?.searchBarTextField.resignFirstResponder()
+                self.newTrack(clinic: clinic)
+            }
         }
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 //    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -378,24 +475,31 @@ extension MapViewModel: JKBottomSearchDataSource, JKBottomSearchViewDelegate{
         searchBar.resignFirstResponder()
     }
     
-    
 }
 
 extension MapViewModel: GMSMapViewDelegate{
     func mapView(_ mapView: GMSMapView, didTap marker: GMSMarker) -> Bool {
         
         self.getCurrentClinic(marker: marker) { (clinic) in
+
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             marker.icon = clinic.highlight == 1 ? UIImage(named: "EliteSelected") : UIImage(named: "Selected")
             self.isInfoClinicViewOpened = true
             self.savedLastMarker = marker
             self.delegateClinicID?.clinicId(id: clinic.id!)
-        }
-        if(isSerchViewOpened == true){
-            searchView?.toggleExpand(.closed, fast: true)
-            clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
-        }else{
-            clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
-        }
+            self.delegateClinicID?.mapCoordinator(coordinator: self.coordinatorMap!)
+            mapView.selectedMarker = marker
+            if(self.isSerchViewOpened == true){
+                self.searchView?.toggleExpand(.closed, fast: true)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                self.clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
+                }
+            }else{
+                self.clinicInfoViewModel.toggleExpand(state: .fullyCollapsed)
+            }
+                }
+            }
+
         return false
     }
     
@@ -403,17 +507,26 @@ extension MapViewModel: GMSMapViewDelegate{
         
         self.removeOutOfRange(position: position.target, range: 1000)
         
-        clinicsLoader.getClinics(radius: 1, longitude: position.target.longitude, latitude: position.target.latitude) { (clinics) in
-
-            for clinic in clinics{
-                let marker = GMSMarker()
-                marker.position = CLLocationCoordinate2D(latitude: clinic.latitude!, longitude: clinic.longitude!)
-                marker.appearAnimation = GMSMarkerAnimation.pop
-                marker.title = clinic.address
-                marker.icon =  clinic.highlight == 1 ? UIImage(named: "EliteNotSelected")  : UIImage(named: "NotSelected")
-                marker.snippet = clinic.title
+        clinicsLoader.getClinics(radius: 1, longitude: position.target.longitude, latitude: position.target.latitude) { (clinics, status) in
+            
+            DispatchQueue.main.async {
                 
-                self.appendInRange(position: position, marker: marker, range: 1000)
+                switch status {
+                case .unknown, .offline:
+                    let banner = GrowingNotificationBanner(title: "Упс, что-то полшло не так!", subtitle: "Проверьте интернет соединение", style:.danger )
+                    banner.show()
+                case .online(.wwan), .online(.wiFi):
+                    for clinic in clinics{
+                        let marker = GMSMarker()
+                        marker.position = CLLocationCoordinate2D(latitude: clinic.latitude!, longitude: clinic.longitude!)
+                        marker.appearAnimation = GMSMarkerAnimation.pop
+                        marker.title = clinic.address
+                        marker.icon =  clinic.highlight == 1 ? UIImage(named: "EliteNotSelected")  : UIImage(named: "NotSelected")
+                        marker.snippet = clinic.title
+                        
+                        self.appendInRange(position: position, marker: marker, range: 1000)
+                    }
+                }
             }
             self.allClinicsMap = clinics
             print("allMarkers : \(self.allMarkers.count)")
@@ -426,9 +539,10 @@ extension MapViewModel: GMSMapViewDelegate{
         
         self.getCurrentClinic(marker: marker) { (clinics) in
             marker.icon = clinics.highlight == 1 ? UIImage(named: "EliteNotSelected") : UIImage(named: "NotSelected")
+            DispatchQueue.main.async {
+                self.clinicInfoViewModel.toggleExpand(state: .closed)
+            }
         }
-        
-        clinicInfoViewModel.toggleExpand(state: .closed)
             
     }
 }
